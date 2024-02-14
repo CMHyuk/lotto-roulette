@@ -1,6 +1,7 @@
 package com.lotto.roulette.backend.command.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.common.exception.InternalServerErrorCode;
 import lombok.RequiredArgsConstructor;

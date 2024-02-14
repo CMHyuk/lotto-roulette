@@ -1,7 +1,7 @@
 package com.lotto.roulette.backend.command.presentation;
 
 import com.lotto.roulette.backend.command.application.LottoFacade;
-import com.lotto.roulette.backend.command.infrastructure.LottoWinnerInfo;
+import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

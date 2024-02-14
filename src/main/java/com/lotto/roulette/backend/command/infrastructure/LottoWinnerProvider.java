@@ -1,6 +1,7 @@
 package com.lotto.roulette.backend.command.infrastructure;
 
 import com.lotto.roulette.backend.command.application.LottoWinnerNumberInfoProvider;
+import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
