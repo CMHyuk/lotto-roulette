@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.infrastructure;
+package com.lotto.roulette.backend.command.infrastructure.lotto;
 
 import com.lotto.roulette.backend.command.application.LottoWinnerNumberInfoProvider;
 import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;

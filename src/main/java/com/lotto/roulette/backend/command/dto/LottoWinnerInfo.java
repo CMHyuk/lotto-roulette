@@ -2,7 +2,7 @@ package com.lotto.roulette.backend.command.dto;
 
 import com.lotto.roulette.backend.command.domain.LottoNumber;
 import com.lotto.roulette.backend.command.domain.LottoHistory;
-import com.lotto.roulette.backend.command.infrastructure.LottoWinnerApiResponse;
+import com.lotto.roulette.backend.command.infrastructure.lotto.LottoWinnerApiResponse;
 
 import java.text.NumberFormat;
 import java.util.Locale;

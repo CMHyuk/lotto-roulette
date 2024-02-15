@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.infrastructure;
+package com.lotto.roulette.backend.command.infrastructure.lotto;
 
 public record LottoWinnerApiResponse(
         String returnValue,

@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.infrastructure;
+package com.lotto.roulette.backend.command.infrastructure.lotto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;
