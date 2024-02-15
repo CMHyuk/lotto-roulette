@@ -3,13 +3,13 @@ package com.lotto.roulette.backend.command.infrastructure;
 import lombok.Getter;
 
 @Getter
-public enum LottoConst {
+public enum LotteryConst {
 
     CHATGPT("chatgpt"), CUSTOM("custom");
 
     private final String name;
 
-    LottoConst(String name) {
+    LotteryConst(String name) {
         this.name = name;
     }
 }

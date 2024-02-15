@@ -1,7 +1,7 @@
-CREATE TABLE lotto_history
+CREATE TABLE lottery_history
 (
     id                  BIGINT AUTO_INCREMENT NOT NULL,
-    first_prize_amount  VARCHAR(255)          NOT NULL,
+    first_prize_amount  BIGINT                NOT NULL,
     winner_count        INT                   NOT NULL,
     round_date          DATE                  NOT NULL,
     first_lotto_number  INT                   NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE lotto_history
     fifth_lotto_number  INT                   NOT NULL,
     sixth_lotto_number  INT                   NOT NULL,
     round               INT                   NOT NULL,
-    CONSTRAINT pk_lottohistory PRIMARY KEY (id)
+    CONSTRAINT pk_lotteryhistory PRIMARY KEY (id)
 );

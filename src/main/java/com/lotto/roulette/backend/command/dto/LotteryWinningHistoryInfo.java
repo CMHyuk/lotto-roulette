@@ -1,13 +1,13 @@
 package com.lotto.roulette.backend.command.dto;
 
-import com.lotto.roulette.backend.command.domain.LottoNumber;
-import com.lotto.roulette.backend.command.domain.LottoHistory;
-import com.lotto.roulette.backend.command.infrastructure.lotto.LottoWinnerApiResponse;
+import com.lotto.roulette.backend.command.domain.LotteryNumber;
+import com.lotto.roulette.backend.command.domain.LotteryHistory;
+import com.lotto.roulette.backend.command.infrastructure.lotto.LotteryWinningHistoryResponse;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public record LottoWinnerInfo(
+public record LotteryWinningHistoryInfo(
         String roundDate,
         String firstPrizeAmount,
         int winnerCount,
@@ -21,17 +21,17 @@ public record LottoWinnerInfo(
         int round
 ) {
 
-    public LottoHistory toEntity() {
-        LottoNumber lottoNumber = LottoNumber.create(
+    public LotteryHistory toEntity() {
+        LotteryNumber lotteryNumber = LotteryNumber.create(
                 firstLottoNumber, secondLottoNumber,
                 thirdLottoNumber, fourthLottoNumber,
                 fifthLottoNumber, sixthLottoNumber
         );
-        return LottoHistory.create(lottoNumber, firstPrizeAmount, winnerCount, roundDate, round);
+        return LotteryHistory.create(lotteryNumber, Long.parseLong(firstPrizeAmount), winnerCount, roundDate, round);
     }
 
-    public static LottoWinnerInfo from(LottoWinnerApiResponse response) {
-        return new LottoWinnerInfo(
+    public static LotteryWinningHistoryInfo from(LotteryWinningHistoryResponse response) {
+        return new LotteryWinningHistoryInfo(
                 response.drwNoDate(), convertToKRWFormat(response.firstWinamnt()),
                 response.firstPrzwnerCo(), response.drwtNo1(),
                 response.drwtNo2(), response.drwtNo3(),

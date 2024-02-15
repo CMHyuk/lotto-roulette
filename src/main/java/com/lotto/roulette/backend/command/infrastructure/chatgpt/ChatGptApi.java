@@ -12,6 +12,6 @@ public interface ChatGptApi {
     @PostMapping
     ResponseEntity<ChatGptResponse> getLottoNumbers(
             @RequestHeader("Authorization") String secretKey,
-            @RequestBody ChatgptRequest chatgptRequest
+            @RequestBody ChatGptRequest chatgptRequest
     );
 }

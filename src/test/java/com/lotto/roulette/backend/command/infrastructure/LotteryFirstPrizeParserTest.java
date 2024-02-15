@@ -1,7 +1,7 @@
 package com.lotto.roulette.backend.command.infrastructure;
 
-import com.lotto.roulette.backend.command.dto.LottoWinnerInfo;
-import com.lotto.roulette.backend.command.infrastructure.lotto.LottoWinnerParser;
+import com.lotto.roulette.backend.command.dto.LotteryWinningHistoryInfo;
+import com.lotto.roulette.backend.command.infrastructure.lotto.LotteryFirstPrizeParser;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LottoWinnerParserTest {
+class LotteryFirstPrizeParserTest {
 
     @Nested
     @DisplayName("로또 당첨 정보의 JSON 변환을")
@@ -37,7 +37,7 @@ class LottoWinnerParserTest {
                     "}";
 
             // when
-            LottoWinnerInfo result = LottoWinnerParser.parseLottoWinnerInfo(lottoWinnerInfo);
+            LotteryWinningHistoryInfo result = LotteryFirstPrizeParser.parseLottoWinnerInfo(lottoWinnerInfo);
 
             // then
             assertEquals(1, result.firstLottoNumber());
@@ -64,7 +64,7 @@ class LottoWinnerParserTest {
                     "}";
 
             // when then
-            assertThatThrownBy(() -> LottoWinnerParser.parseLottoWinnerInfo(invalidJson))
+            assertThatThrownBy(() -> LotteryFirstPrizeParser.parseLottoWinnerInfo(invalidJson))
                     .isInstanceOf(BusinessException.class);
         }
     }

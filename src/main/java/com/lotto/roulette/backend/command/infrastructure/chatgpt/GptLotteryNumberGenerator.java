@@ -1,18 +1,17 @@
 package com.lotto.roulette.backend.command.infrastructure.chatgpt;
 
-import com.lotto.roulette.backend.command.application.LottoNumberGenerator;
+import com.lotto.roulette.backend.command.application.LotteryNumberGenerator;
 import com.lotto.roulette.backend.common.ApiResponseExtractor;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import static com.lotto.roulette.backend.command.infrastructure.LottoConst.CHATGPT;
+import static com.lotto.roulette.backend.command.infrastructure.LotteryConst.CHATGPT;
 
 @Component
 @RequiredArgsConstructor
-public class GptLottoNumberGenerator implements LottoNumberGenerator {
+public class GptLotteryNumberGenerator implements LotteryNumberGenerator {
 
     private static final String BEARER = "Bearer ";
 
@@ -22,7 +21,7 @@ public class GptLottoNumberGenerator implements LottoNumberGenerator {
     private final ChatGptApi chatGPTApi;
 
     @Override
-    public LottoNumberResponse getLottoNumbers(ChatgptRequest chatgptRequest) {
+    public LottoNumberResponse getLottoNumbers(ChatGptRequest chatgptRequest) {
         String bearerToken = BEARER + secretKey;
         ResponseEntity<ChatGptResponse> response = chatGPTApi.getLottoNumbers(bearerToken, chatgptRequest);
         ChatGptResponse chatGptResponse = ApiResponseExtractor.getBody(response);

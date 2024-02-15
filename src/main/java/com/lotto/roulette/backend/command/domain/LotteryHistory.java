@@ -8,16 +8,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class LottoHistory {
+public class LotteryHistory {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Embedded
-    private LottoNumber lottoNumber;
+    private LotteryNumber lotteryNumber;
 
     @Column(nullable = false)
-    private String firstPrizeAmount;
+    private Long firstPrizeAmount;
 
     @Column(nullable = false)
     private Integer winnerCount;
@@ -28,14 +28,14 @@ public class LottoHistory {
     @Column(nullable = false)
     private Integer round;
 
-    public static LottoHistory create(LottoNumber lottoNumber, String firstPrizeAmount,
-                                      Integer winnerCount, String roundDate, Integer round) {
-        return new LottoHistory(lottoNumber, firstPrizeAmount, winnerCount, roundDate, round);
+    public static LotteryHistory create(LotteryNumber lotteryNumber, Long firstPrizeAmount,
+                                        Integer winnerCount, String roundDate, Integer round) {
+        return new LotteryHistory(lotteryNumber, firstPrizeAmount, winnerCount, roundDate, round);
     }
 
-    private LottoHistory(LottoNumber lottoNumber, String firstPrizeAmount,
-                         Integer winnerCount, String roundDate, Integer round) {
-        this.lottoNumber = lottoNumber;
+    private LotteryHistory(LotteryNumber lotteryNumber, Long firstPrizeAmount,
+                           Integer winnerCount, String roundDate, Integer round) {
+        this.lotteryNumber = lotteryNumber;
         this.firstPrizeAmount = firstPrizeAmount;
         this.winnerCount = winnerCount;
         this.roundDate = roundDate;

@@ -1,6 +1,6 @@
 package com.lotto.roulette.backend.command.infrastructure.lotto;
 
-public record LottoWinnerApiResponse(
+public record LotteryWinningHistoryResponse(
         String returnValue,
         Long totSellamnt,
         String drwNoDate,

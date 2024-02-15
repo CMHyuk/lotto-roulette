@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class LottoNumber {
+public class LotteryNumber {
 
     @Column(nullable = false)
     private int firstLottoNumber;
@@ -29,14 +29,14 @@ public class LottoNumber {
     @Column(nullable = false)
     private int sixthLottoNumber;
 
-    public static LottoNumber create(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
-                                     int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
-        return new LottoNumber(firstLottoNumber, secondLottoNumber, thirdLottoNumber,
+    public static LotteryNumber create(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
+                                       int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
+        return new LotteryNumber(firstLottoNumber, secondLottoNumber, thirdLottoNumber,
                 fourthLottoNumber, fifthLottoNumber, sixthLottoNumber);
     }
 
-    private LottoNumber(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
-                       int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
+    private LotteryNumber(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
+                          int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
         this.firstLottoNumber = firstLottoNumber;
         this.secondLottoNumber = secondLottoNumber;
         this.thirdLottoNumber = thirdLottoNumber;
