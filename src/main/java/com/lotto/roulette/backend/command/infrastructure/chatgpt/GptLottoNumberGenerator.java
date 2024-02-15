@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-@Slf4j
+import static com.lotto.roulette.backend.command.infrastructure.LottoConst.CHATGPT;
+
 @Component
 @RequiredArgsConstructor
 public class GptLottoNumberGenerator implements LottoNumberGenerator {
@@ -25,12 +26,11 @@ public class GptLottoNumberGenerator implements LottoNumberGenerator {
         String bearerToken = BEARER + secretKey;
         ResponseEntity<ChatGptResponse> response = chatGPTApi.getLottoNumbers(bearerToken, chatgptRequest);
         ChatGptResponse chatGptResponse = ApiResponseExtractor.getBody(response);
-        log.info("text = {} ", chatGptResponse.getText());
         return LottoNumberResponse.from(chatGptResponse);
     }
 
     @Override
     public String getGenerator() {
-        return "ChatGpt";
+        return CHATGPT.getName();
     }
 }
