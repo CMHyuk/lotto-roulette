@@ -8,3 +8,6 @@ spring:
     hibernate:
       format_sql: true
       show_sql: true
+
+chatgpt:
+  api-key: key
