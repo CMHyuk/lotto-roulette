@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class LottoWinnerProvider implements LottoWinnerNumberInfoProvider {
 
-    private final LottoWinnerNumberApi lottoWinnerNumberApi;
+    private final LottoWinnerApi lottoWinnerApi;
 
     @Override
     public LottoWinnerInfo getLottoWinnerInfo(int drwNo) {
-        String lottoWinnerInfo = lottoWinnerNumberApi.getLottoWinnerInfo(drwNo);
+        String lottoWinnerInfo = lottoWinnerApi.getLottoWinnerInfo(drwNo);
         return LottoWinnerParser.parseLottoWinnerInfo(lottoWinnerInfo);
     }
 }
