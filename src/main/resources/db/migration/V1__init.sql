@@ -13,3 +13,11 @@ CREATE TABLE lottery_history
     round               INT                   NOT NULL,
     CONSTRAINT pk_lotteryhistory PRIMARY KEY (id)
 );
+
+CREATE TABLE lottery_number_frequency
+(
+    lottery_number_frequency_id BIGINT AUTO_INCREMENT NOT NULL,
+    lotto_number             INT                   NOT NULL,
+    frequency                INT                   NOT NULL,
+    CONSTRAINT pk_lotterynumberfrequency PRIMARY KEY (lottery_number_frequency_id)
+);
