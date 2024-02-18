@@ -13,6 +13,6 @@ public class LotteryWinningHistoryProvider implements LotteryProvider {
     @Override
     public LotteryWinningHistoryInfo getLottoWinnerInfo(int drwNo) {
         String lottoWinnerInfo = lotteryWinningHistoryApi.getLottoWinnerInfo(drwNo);
-        return LotteryFirstPrizeParser.parseLottoWinnerInfo(lottoWinnerInfo);
+        return LotteryHistoryParser.parseLottoWinnerInfo(lottoWinnerInfo);
     }
 }
