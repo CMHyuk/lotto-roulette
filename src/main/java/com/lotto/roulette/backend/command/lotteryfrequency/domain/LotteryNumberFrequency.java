@@ -15,15 +15,15 @@ public class LotteryNumberFrequency {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer lottoNumber;
+    private Integer lotteryNumber;
     private Integer frequency;
 
     public void increaseFrequency() {
         this.frequency++;
     }
 
-    public LotteryNumberFrequency(Integer lottoNumber) {
-        this.lottoNumber = lottoNumber;
+    public LotteryNumberFrequency(Integer lotteryNumber) {
+        this.lotteryNumber = lotteryNumber;
         this.frequency = DEFAULT_FREQUENCY;
     }
 }
