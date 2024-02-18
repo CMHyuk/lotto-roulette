@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.lotto.roulette.backend.command.exception.LotteryException.NOT_EXISTS_PROVIDER;
+import static com.lotto.roulette.backend.command.lotterynumber.exception.LotteryNumberGeneratorException.NOT_EXISTS_PROVIDER;
 import static java.util.stream.Collectors.toMap;
 
 @Component
