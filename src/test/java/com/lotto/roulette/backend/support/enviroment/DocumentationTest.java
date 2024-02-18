@@ -2,6 +2,8 @@ package com.lotto.roulette.backend.support.enviroment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.roulette.backend.command.lotteryfrequency.application.LotteryNumberFrequencyService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryWinnerService;
+import com.lotto.roulette.backend.command.lotterynumber.application.LotteryNumberGenerateService;
 import com.lotto.roulette.backend.common.exception.ErrorCode;
 import com.lotto.roulette.backend.query.service.LotteryHistoryQueryService;
 import org.mockito.Mock;
@@ -42,7 +44,13 @@ public class DocumentationTest {
     @MockBean
     protected LotteryNumberFrequencyService lotteryNumberFrequencyService;
 
-    @Mock
+    @MockBean
+    protected LotteryWinnerService lotteryWinnerService;
+
+    @MockBean
+    protected LotteryNumberGenerateService lotteryNumberGenerateService;
+
+    @MockBean
     protected LotteryHistoryQueryService lotteryHistoryQueryService;
 
     protected List<FieldDescriptor> getErrorDescriptor(ErrorCode[] errorCodes) {
