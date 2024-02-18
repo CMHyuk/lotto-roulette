@@ -17,7 +17,7 @@ public class LotteryNumberFrequencyService {
 
     public void save(List<Integer> winningNumbers) {
         for (Integer winningNumber : winningNumbers) {
-            LotteryNumberFrequency frequency = lotteryNumberFrequencyRepository.findByLottoNumber(winningNumber)
+            LotteryNumberFrequency frequency = lotteryNumberFrequencyRepository.findByLotteryNumber(winningNumber)
                     .orElseGet(() -> {
                         LotteryNumberFrequency lotteryNumberFrequency = new LotteryNumberFrequency(winningNumber);
                         lotteryNumberFrequencyRepository.save(lotteryNumberFrequency);
