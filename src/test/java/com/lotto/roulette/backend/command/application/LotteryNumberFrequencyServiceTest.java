@@ -1,7 +1,8 @@
 package com.lotto.roulette.backend.command.application;
 
-import com.lotto.roulette.backend.command.domain.LotteryNumberFrequency;
-import com.lotto.roulette.backend.command.domain.LotteryNumberFrequencyRepository;
+import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequency;
+import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequencyRepository;
+import com.lotto.roulette.backend.command.lotteryfrequency.application.LotteryNumberFrequencyService;
 import com.lotto.roulette.backend.support.enviroment.ServiceTest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
