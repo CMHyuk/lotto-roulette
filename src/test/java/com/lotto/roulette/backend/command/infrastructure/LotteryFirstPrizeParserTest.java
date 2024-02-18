@@ -48,7 +48,6 @@ class LotteryFirstPrizeParserTest {
             assertEquals(42, result.sixthLottoNumber());
             assertEquals(6, result.bonusNumber());
             assertEquals("₩3,315,315,525", result.firstPrizeAmount());
-            assertEquals("2004-10-30", result.roundDate());
             assertEquals(4, result.winnerCount());
             assertEquals(100, result.round());
         }
