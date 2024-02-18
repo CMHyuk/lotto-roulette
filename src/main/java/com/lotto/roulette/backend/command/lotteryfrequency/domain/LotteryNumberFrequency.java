@@ -13,7 +13,6 @@ public class LotteryNumberFrequency {
     private static final int DEFAULT_FREQUENCY = 0;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "lottery_number_frequency_id")
     private Long id;
 
     private Integer lottoNumber;
