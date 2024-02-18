@@ -20,7 +20,7 @@ class LotteryHistoryQueryControllerTest extends DocumentationTest {
     void 로또_역대_최고_상금액을_조회한다() throws Exception {
         // given
         given(lotteryHistoryQueryService.getTopPrize())
-                .willReturn(new TopPrizeResponse(1500000000L));
+                .willReturn(new TopPrizeResponse("₩1,500,000,000"));
 
         // when
         ResultActions result = mockMvc.perform(get("/top-prize")
@@ -31,7 +31,7 @@ class LotteryHistoryQueryControllerTest extends DocumentationTest {
         result.andExpect((status().isOk()))
                 .andDo(document("get-top-prize", HOST_INFO, DOCUMENT_RESPONSE,
                         responseFields(
-                                fieldWithPath("topPrize").type(JsonFieldType.NUMBER).description("로또 역대 최고 상금액")
+                                fieldWithPath("topPrize").type(JsonFieldType.STRING).description("로또 역대 최고 상금액")
                         )));
     }
 }
