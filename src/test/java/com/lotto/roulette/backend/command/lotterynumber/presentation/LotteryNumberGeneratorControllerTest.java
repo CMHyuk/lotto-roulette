@@ -5,7 +5,6 @@ import com.lotto.roulette.backend.command.lotterynumber.exception.LotteryNumberG
 import com.lotto.roulette.backend.support.enviroment.DocumentationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.ResultActions;
 
