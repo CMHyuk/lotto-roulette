@@ -8,3 +8,8 @@
 
 == 로또 역대 최고 상금액 조회
 operation::get-top-prize[snippets='http-request,http-response,response-fields']
+
+== 로또 번호 생성
+operation::generate-lottery-numbers[snippets='http-request,http-response,response-fields']
+=== 에러코드
+include::{snippets}/lottery-number-error-Code/response-body.adoc[]
