@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class LotteryFirstPrizeParser {
+public class LotteryHistoryParser {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
