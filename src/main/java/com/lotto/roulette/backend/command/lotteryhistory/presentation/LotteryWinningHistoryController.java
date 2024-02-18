@@ -1,7 +1,7 @@
 package com.lotto.roulette.backend.command.lotteryhistory.presentation;
 
 import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryWinnerService;
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory.LotteryWinningHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryWinningHistoryInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

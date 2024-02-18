@@ -1,6 +1,6 @@
 package com.lotto.roulette.backend.command.lotteryhistory.domain;
 
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory.LotteryWinningHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryWinningHistoryInfo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

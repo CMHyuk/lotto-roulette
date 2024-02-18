@@ -1,7 +1,7 @@
 package com.lotto.roulette.backend.command.infrastructure;
 
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory.LotteryWinningHistoryInfo;
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory.LotteryFirstPrizeParser;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryWinningHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryFirstPrizeParser;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
