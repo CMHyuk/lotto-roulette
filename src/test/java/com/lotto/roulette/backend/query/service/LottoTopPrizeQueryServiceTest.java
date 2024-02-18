@@ -20,6 +20,6 @@ class LottoTopPrizeQueryServiceTest extends ServiceTest {
         TopPrizeResponse topPrize = lottoTopPrizeQueryService.getTopPrize();
 
         // then
-        assertThat(topPrize.topPrize()).isEqualTo(1500000000);
+        assertThat(topPrize.topPrize()).isEqualTo("₩1,500,000,000");
     }
 }
