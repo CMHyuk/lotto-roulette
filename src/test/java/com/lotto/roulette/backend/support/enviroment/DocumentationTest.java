@@ -6,7 +6,6 @@ import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryWinn
 import com.lotto.roulette.backend.command.lotterynumber.application.LotteryNumberGenerateService;
 import com.lotto.roulette.backend.common.exception.ErrorCode;
 import com.lotto.roulette.backend.query.service.LotteryHistoryQueryService;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -57,7 +56,7 @@ public class DocumentationTest {
         return Arrays.stream(errorCodes)
                 .flatMap(errorCode -> Stream.of(
                         fieldWithPath(errorCode.getHttpStatusCode() + ".httpStatus").description(errorCode.getHttpStatusCode()),
-                        fieldWithPath(errorCode.getErrorMessage() + ".message").description(errorCode.getErrorMessage())
+                        fieldWithPath(errorCode.getHttpStatusCode() + ".message").description(errorCode.getErrorMessage())
                 )).toList();
     }
 }

@@ -1,6 +1,7 @@
 package com.lotto.roulette.backend.support;
 
 import com.lotto.roulette.backend.common.exception.ErrorCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import static java.util.stream.Collectors.toMap;
 public class ErrorCodeController {
 
     @GetMapping
-    public Map<HttpStatusCode, Object> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
+    public Map<Integer, ErrorCodeResponse> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
         Class<?> errorCodeType = Class.forName(className);
         ErrorCode[] errorCodes = (ErrorCode[]) errorCodeType.getEnumConstants();
         return Arrays.stream(errorCodes)
@@ -25,7 +26,7 @@ public class ErrorCodeController {
     }
 
     record ErrorCodeResponse(
-            HttpStatusCode httpStatus,
+            Integer httpStatus,
             String message
     ) {
         public ErrorCodeResponse(ErrorCode code) {

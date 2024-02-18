@@ -4,16 +4,14 @@ import com.lotto.roulette.backend.common.exception.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum LotteryNumberGeneratorException implements ErrorCode {
 
-    NOT_EXISTS_PROVIDER(HttpStatus.NOT_FOUND, "존재하지 않는 번호 생성 방식입니다."),
+    NOT_EXISTS_PROVIDER(404, "존재하지 않는 번호 생성 방식입니다."),
     ;
 
-    private final HttpStatusCode httpStatusCode;
+    private final int httpStatusCode;
     private final String errorMessage;
 }
