@@ -1,0 +1,10 @@
+= Birca API 문서
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+== 로또 역대 최고 상금액 조회
+operation::get-top-prize[snippets='http-request,http-response,response-fields']
