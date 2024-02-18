@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.infrastructure;
+package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
 import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryWinningHistoryInfo;
 import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryFirstPrizeParser;

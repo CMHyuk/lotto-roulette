@@ -1,15 +1,17 @@
-package com.lotto.roulette.backend.command.application;
+package com.lotto.roulette.backend.command.lotteryfrequency.application;
 
 import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequency;
 import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequencyRepository;
-import com.lotto.roulette.backend.command.lotteryfrequency.application.LotteryNumberFrequencyService;
+import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.support.enviroment.ServiceTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
+
+import static com.lotto.roulette.backend.command.lotteryfrequency.exception.LotteryFrequencyException.NOT_EXISTS_LOTTERY_FREQUENCY;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Sql("/fixture/lottery-number-frequency-fixture.sql")
 class LotteryNumberFrequencyServiceTest extends ServiceTest {
@@ -27,12 +29,10 @@ class LotteryNumberFrequencyServiceTest extends ServiceTest {
 
         // when
         lotteryNumberFrequencyService.save(winningNumbers);
-
-        LotteryNumberFrequency lotteryNumberFrequency = lotteryNumberFrequencyRepository.findByLottoNumber(44)
-                .orElseThrow();
+        LotteryNumberFrequency lotteryNumberFrequency = lotteryNumberFrequencyRepository.findByLotteryNumber(44)
+                .orElseThrow(() -> BusinessException.from(NOT_EXISTS_LOTTERY_FREQUENCY));
 
         // then
-        Assertions.assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(11);
+        assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(11);
     }
-
 }
