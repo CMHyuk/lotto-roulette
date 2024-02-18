@@ -11,3 +11,4 @@ spring:
 
 chatgpt:
   api-key: key
+  prompt: "prompt"
