@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory;
+package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

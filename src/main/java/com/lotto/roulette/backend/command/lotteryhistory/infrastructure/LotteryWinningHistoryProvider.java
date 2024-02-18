@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory;
+package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
 import com.lotto.roulette.backend.command.lotterynumber.application.LotteryProvider;
 import lombok.RequiredArgsConstructor;

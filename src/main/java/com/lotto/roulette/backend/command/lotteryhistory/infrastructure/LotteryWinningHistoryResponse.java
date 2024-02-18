@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterywinninghistory;
+package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
 public record LotteryWinningHistoryResponse(
         String returnValue,
