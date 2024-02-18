@@ -7,9 +7,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public record LotteryWinningHistoryInfo(
-        String roundDate,
-        String firstPrizeAmount,
-        int winnerCount,
+        int round,
         int firstLottoNumber,
         int secondLottoNumber,
         int thirdLottoNumber,
@@ -17,7 +15,8 @@ public record LotteryWinningHistoryInfo(
         int fifthLottoNumber,
         int sixthLottoNumber,
         int bonusNumber,
-        int round
+        String firstPrizeAmount,
+        int winnerCount
 ) {
 
     public LotteryHistory toEntity() {
@@ -26,17 +25,17 @@ public record LotteryWinningHistoryInfo(
                 thirdLottoNumber, fourthLottoNumber,
                 fifthLottoNumber, sixthLottoNumber
         );
-        return LotteryHistory.create(lotteryNumber, Long.parseLong(firstPrizeAmount), winnerCount, roundDate, round);
+        return LotteryHistory.create(lotteryNumber, Long.parseLong(firstPrizeAmount), winnerCount, round);
     }
 
     public static LotteryWinningHistoryInfo from(LotteryWinningHistoryResponse response) {
         return new LotteryWinningHistoryInfo(
-                response.drwNoDate(), convertToKRWFormat(response.firstWinamnt()),
-                response.firstPrzwnerCo(), response.drwtNo1(),
+                response.drwNo(), response.drwtNo1(),
                 response.drwtNo2(), response.drwtNo3(),
                 response.drwtNo4(), response.drwtNo5(),
                 response.drwtNo6(), response.bnusNo(),
-                response.drwNo());
+                convertToKRWFormat(response.firstWinamnt()), response.firstPrzwnerCo()
+                );
     }
 
     public static String convertToKRWFormat(Long firstPrizeAmount) {
