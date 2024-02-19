@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryfrequency.domain;
+package com.lotto.roulette.backend.command.lotteryhistory.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

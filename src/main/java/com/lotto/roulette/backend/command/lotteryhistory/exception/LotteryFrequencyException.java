@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryfrequency.exception;
+package com.lotto.roulette.backend.command.lotteryhistory.exception;
 
 import com.lotto.roulette.backend.common.exception.ErrorCode;
 import lombok.AccessLevel;

@@ -1,8 +1,7 @@
-package com.lotto.roulette.backend.command.lotteryfrequency.presentation;
+package com.lotto.roulette.backend.command.lotteryhistory.presentation;
 
-import com.lotto.roulette.backend.command.lotteryfrequency.application.LotteryNumberFrequencyService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

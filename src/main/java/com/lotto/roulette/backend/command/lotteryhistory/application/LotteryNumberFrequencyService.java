@@ -1,7 +1,7 @@
-package com.lotto.roulette.backend.command.lotteryfrequency.application;
+package com.lotto.roulette.backend.command.lotteryhistory.application;
 
-import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequency;
-import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequencyRepository;
+import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumberFrequency;
+import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumberFrequencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
