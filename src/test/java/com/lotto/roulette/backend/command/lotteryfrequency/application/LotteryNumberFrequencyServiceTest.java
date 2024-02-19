@@ -1,7 +1,8 @@
 package com.lotto.roulette.backend.command.lotteryfrequency.application;
 
-import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequency;
-import com.lotto.roulette.backend.command.lotteryfrequency.domain.LotteryNumberFrequencyRepository;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
+import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumberFrequency;
+import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumberFrequencyRepository;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.support.enviroment.ServiceTest;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
-import static com.lotto.roulette.backend.command.lotteryfrequency.exception.LotteryFrequencyException.NOT_EXISTS_LOTTERY_FREQUENCY;
+import static com.lotto.roulette.backend.command.lotteryhistory.exception.LotteryFrequencyException.NOT_EXISTS_LOTTERY_FREQUENCY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Sql("/fixture/lottery-number-frequency-fixture.sql")
