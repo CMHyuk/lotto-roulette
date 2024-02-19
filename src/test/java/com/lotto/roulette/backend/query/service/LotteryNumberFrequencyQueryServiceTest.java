@@ -23,7 +23,7 @@ class LotteryNumberFrequencyQueryServiceTest extends ServiceTest {
 
         // then
         assertThat(results.size()).isEqualTo(45);
-        assertThat(results.get(37).lottoNumber()).isEqualTo(38);
+        assertThat(results.get(37).lotteryNumber()).isEqualTo(38);
         assertThat(results.get(37).frequency()).isEqualTo(44);
     }
 }

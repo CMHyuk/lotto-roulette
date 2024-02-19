@@ -1,8 +1,8 @@
 package com.lotto.roulette.backend.query.dto;
 
-public record LotteryNumberFrequencyResponse(int lottoNumber, int frequency) {
+public record LotteryNumberFrequencyResponse(int lotteryNumber, int frequency) {
 
-    public static LotteryNumberFrequencyResponse of(int lottoNumber, int frequency) {
-        return new LotteryNumberFrequencyResponse(lottoNumber, frequency);
+    public static LotteryNumberFrequencyResponse of(int lotteryNumber, int frequency) {
+        return new LotteryNumberFrequencyResponse(lotteryNumber, frequency);
     }
 }
