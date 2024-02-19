@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static com.lotto.roulette.backend.command.lotteryhistory.exception.LotteryHistoryException.NOT_EXISTS_EXCEL_DATA;
 
-public record LotteryWinningHistoryInfo(
+public record LotteryHistoryInfo(
         int round,
         int firstLottoNumber,
         int secondLottoNumber,
@@ -25,8 +25,8 @@ public record LotteryWinningHistoryInfo(
         int winnerCount
 ) {
 
-    public static LotteryWinningHistoryInfo of(DataFormatter formatter, XSSFRow row) {
-        return new LotteryWinningHistoryInfo(
+    public static LotteryHistoryInfo of(DataFormatter formatter, XSSFRow row) {
+        return new LotteryHistoryInfo(
                 parseInt(formatter, row, 0),
                 parseInt(formatter, row, 1),
                 parseInt(formatter, row, 2),
@@ -47,13 +47,13 @@ public record LotteryWinningHistoryInfo(
                 .orElseThrow(() -> BusinessException.from(NOT_EXISTS_EXCEL_DATA));
     }
 
-    public static List<LotteryHistory> toEntities(List<LotteryWinningHistoryInfo> historyInfos) {
+    public static List<LotteryHistory> toEntities(List<LotteryHistoryInfo> historyInfos) {
         return historyInfos.stream()
-                .map(LotteryWinningHistoryInfo::toEntity)
+                .map(LotteryHistoryInfo::toEntity)
                 .collect(Collectors.toList());
     }
 
-    private static LotteryHistory toEntity(LotteryWinningHistoryInfo info) {
+    private static LotteryHistory toEntity(LotteryHistoryInfo info) {
         return LotteryHistory.create(
                 LotteryNumber.create(
                         info.firstLottoNumber(),

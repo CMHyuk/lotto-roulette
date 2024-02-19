@@ -25,11 +25,11 @@ public class LotteryHistoryParser {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(excel.getInputStream());
             XSSFSheet worksheet = workbook.getSheetAt(0);
-            List<LotteryWinningHistoryInfo> historyInfos = range(1, worksheet.getPhysicalNumberOfRows())
+            List<LotteryHistoryInfo> historyInfos = range(1, worksheet.getPhysicalNumberOfRows())
                     .mapToObj(worksheet::getRow)
-                    .map(row -> LotteryWinningHistoryInfo.of(formatter, row))
+                    .map(row -> LotteryHistoryInfo.of(formatter, row))
                     .toList();
-            return LotteryWinningHistoryInfo.toEntities(historyInfos);
+            return LotteryHistoryInfo.toEntities(historyInfos);
         } catch (IOException e) {
             throw BusinessException.from(new InternalServerErrorCode(e.getMessage()));
         }

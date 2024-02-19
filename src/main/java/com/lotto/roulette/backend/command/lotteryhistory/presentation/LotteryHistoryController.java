@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
-public class LotteryWinningHistoryController {
+public class LotteryHistoryController {
 
     private final LotteryHistoryService lotteryHistoryService;
 
