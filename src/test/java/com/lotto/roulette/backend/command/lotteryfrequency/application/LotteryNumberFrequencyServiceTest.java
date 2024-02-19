@@ -34,6 +34,6 @@ class LotteryNumberFrequencyServiceTest extends ServiceTest {
                 .orElseThrow(() -> BusinessException.from(NOT_EXISTS_LOTTERY_FREQUENCY));
 
         // then
-        assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(11);
+        assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(24);
     }
 }
