@@ -23,8 +23,11 @@ public class LotteryHistoryQueryService {
     public TopPrizeResponse getTopPrize() {
         Long firstPrizeAmount = lotteryHistoryQueryRepository.findTopPrize()
                 .orElseThrow(() -> BusinessException.from(NOT_EXISTS_LOTTERY_HISTORY));
+        return new TopPrizeResponse(formatToKRW(firstPrizeAmount));
+    }
+
+    private String formatToKRW(Long firstPrizeAmount) {
         NumberFormat koreanFormat = NumberFormat.getCurrencyInstance(Locale.KOREA);
-        String result = koreanFormat.format(firstPrizeAmount);
-        return new TopPrizeResponse(result);
+        return koreanFormat.format(firstPrizeAmount);
     }
 }
