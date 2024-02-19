@@ -17,43 +17,43 @@ public class LotteryNumber {
     private static final int LAST_NUMBER = 45;
 
     @Column(nullable = false)
-    private int firstLottoNumber;
+    private int firstLotteryNumber;
 
     @Column(nullable = false)
-    private int secondLottoNumber;
+    private int secondLotteryNumber;
 
     @Column(nullable = false)
-    private int thirdLottoNumber;
+    private int thirdLotteryNumber;
 
     @Column(nullable = false)
-    private int fourthLottoNumber;
+    private int fourthLotteryNumber;
 
     @Column(nullable = false)
-    private int fifthLottoNumber;
+    private int fifthLotteryNumber;
 
     @Column(nullable = false)
-    private int sixthLottoNumber;
+    private int sixthLotteryNumber;
 
-    public static LotteryNumber create(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
-                                       int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
-        return new LotteryNumber(firstLottoNumber, secondLottoNumber, thirdLottoNumber,
-                fourthLottoNumber, fifthLottoNumber, sixthLottoNumber);
+    public static LotteryNumber create(int firstLotteryNumber, int secondLotteryNumber, int thirdLotteryNumber,
+                                       int fourthLotteryNumber, int fifthLotteryNumber, int sixthLotteryNumber) {
+        return new LotteryNumber(firstLotteryNumber, secondLotteryNumber, thirdLotteryNumber,
+                fourthLotteryNumber, fifthLotteryNumber, sixthLotteryNumber);
     }
 
-    private LotteryNumber(int firstLottoNumber, int secondLottoNumber, int thirdLottoNumber,
-                          int fourthLottoNumber, int fifthLottoNumber, int sixthLottoNumber) {
-        validateLottoNumberRange(firstLottoNumber);
-        validateLottoNumberRange(secondLottoNumber);
-        validateLottoNumberRange(thirdLottoNumber);
-        validateLottoNumberRange(fourthLottoNumber);
-        validateLottoNumberRange(fifthLottoNumber);
-        validateLottoNumberRange(sixthLottoNumber);
-        this.firstLottoNumber = firstLottoNumber;
-        this.secondLottoNumber = secondLottoNumber;
-        this.thirdLottoNumber = thirdLottoNumber;
-        this.fourthLottoNumber = fourthLottoNumber;
-        this.fifthLottoNumber = fifthLottoNumber;
-        this.sixthLottoNumber = sixthLottoNumber;
+    private LotteryNumber(int firstLotteryNumber, int secondLotteryNumber, int thirdLotteryNumber,
+                          int fourthLotteryNumber, int fifthLotteryNumber, int sixthLotteryNumber) {
+        validateLottoNumberRange(firstLotteryNumber);
+        validateLottoNumberRange(secondLotteryNumber);
+        validateLottoNumberRange(thirdLotteryNumber);
+        validateLottoNumberRange(fourthLotteryNumber);
+        validateLottoNumberRange(fifthLotteryNumber);
+        validateLottoNumberRange(sixthLotteryNumber);
+        this.firstLotteryNumber = firstLotteryNumber;
+        this.secondLotteryNumber = secondLotteryNumber;
+        this.thirdLotteryNumber = thirdLotteryNumber;
+        this.fourthLotteryNumber = fourthLotteryNumber;
+        this.fifthLotteryNumber = fifthLotteryNumber;
+        this.sixthLotteryNumber = sixthLotteryNumber;
     }
 
     private static void validateLottoNumberRange(int number) {

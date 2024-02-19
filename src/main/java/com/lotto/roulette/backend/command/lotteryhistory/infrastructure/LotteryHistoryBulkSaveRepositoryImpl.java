@@ -59,12 +59,12 @@ public class LotteryHistoryBulkSaveRepositoryImpl implements LotteryHistoryBulkS
         params.put("id", lotteryHistory.getId());
         params.put("first_prize_amount", lotteryHistory.getFirstPrizeAmount());
         params.put("winner_count", lotteryHistory.getWinnerCount());
-        params.put("first_lotto_number", lotteryHistory.getLotteryNumber().getFirstLottoNumber());
-        params.put("second_lotto_number", lotteryHistory.getLotteryNumber().getSecondLottoNumber());
-        params.put("third_lotto_number", lotteryHistory.getLotteryNumber().getThirdLottoNumber());
-        params.put("fourth_lotto_number", lotteryHistory.getLotteryNumber().getFourthLottoNumber());
-        params.put("fifth_lotto_number", lotteryHistory.getLotteryNumber().getFifthLottoNumber());
-        params.put("sixth_lotto_number", lotteryHistory.getLotteryNumber().getSixthLottoNumber());
+        params.put("first_lottery_number", lotteryHistory.getLotteryNumber().getFirstLotteryNumber());
+        params.put("second_lottery_number", lotteryHistory.getLotteryNumber().getSecondLotteryNumber());
+        params.put("third_lottery_number", lotteryHistory.getLotteryNumber().getThirdLotteryNumber());
+        params.put("fourth_lottery_number", lotteryHistory.getLotteryNumber().getFourthLotteryNumber());
+        params.put("fifth_lottery_number", lotteryHistory.getLotteryNumber().getFifthLotteryNumber());
+        params.put("sixth_lottery_number", lotteryHistory.getLotteryNumber().getSixthLotteryNumber());
         params.put("round", lotteryHistory.getRound());
         return params;
     }
