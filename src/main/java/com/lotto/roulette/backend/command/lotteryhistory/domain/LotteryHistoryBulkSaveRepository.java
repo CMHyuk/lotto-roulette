@@ -1,7 +1,8 @@
 package com.lotto.roulette.backend.command.lotteryhistory.domain;
 
-import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
+
 
 public interface LotteryHistoryBulkSaveRepository {
-    void saveAll(List<LotteryHistory> lotteryHistories);
+    void saveAll(MultipartFile excel);
 }

@@ -16,7 +16,6 @@ public class LotteryNumber {
     private static final int FIRST_NUMBER = 1;
     private static final int LAST_NUMBER = 45;
 
-
     @Column(nullable = false)
     private int firstLottoNumber;
 
