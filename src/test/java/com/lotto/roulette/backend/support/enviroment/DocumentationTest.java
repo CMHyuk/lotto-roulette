@@ -1,11 +1,12 @@
 package com.lotto.roulette.backend.support.enviroment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lotto.roulette.backend.command.lotteryfrequency.application.LotteryNumberFrequencyService;
-import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryWinnerService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryService;
 import com.lotto.roulette.backend.command.lotterynumber.application.LotteryNumberGenerateService;
 import com.lotto.roulette.backend.common.exception.ErrorCode;
 import com.lotto.roulette.backend.query.service.LotteryHistoryQueryService;
+import com.lotto.roulette.backend.query.service.LotteryNumberFrequencyQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -44,13 +45,16 @@ public class DocumentationTest {
     protected LotteryNumberFrequencyService lotteryNumberFrequencyService;
 
     @MockBean
-    protected LotteryWinnerService lotteryWinnerService;
+    protected LotteryHistoryService lotteryHistoryService;
 
     @MockBean
     protected LotteryNumberGenerateService lotteryNumberGenerateService;
 
     @MockBean
     protected LotteryHistoryQueryService lotteryHistoryQueryService;
+
+    @MockBean
+    protected LotteryNumberFrequencyQueryService lotteryNumberFrequencyQueryService;
 
     protected List<FieldDescriptor> getErrorDescriptor(ErrorCode[] errorCodes) {
         return Arrays.stream(errorCodes)
