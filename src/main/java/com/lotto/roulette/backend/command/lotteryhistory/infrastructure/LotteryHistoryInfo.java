@@ -8,9 +8,9 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.lotto.roulette.backend.command.lotteryhistory.exception.LotteryHistoryException.NOT_EXISTS_EXCEL_DATA;
+import static java.lang.Long.parseLong;
 
 public record LotteryHistoryInfo(
         int round,
@@ -21,7 +21,7 @@ public record LotteryHistoryInfo(
         int fifthLottoNumber,
         int sixthLottoNumber,
         int bonusNumber,
-        String firstPrizeAmount,
+        Long firstPrizeAmount,
         int winnerCount
 ) {
 
@@ -35,9 +35,13 @@ public record LotteryHistoryInfo(
                 parseInt(formatter, row, 5),
                 parseInt(formatter, row, 6),
                 parseInt(formatter, row, 7),
-                formatter.formatCellValue(row.getCell(8)),
+                parseLong(getFirstPrizeAmount(formatter, row)),
                 parseInt(formatter, row, 9)
         );
+    }
+
+    private static String getFirstPrizeAmount(DataFormatter formatter, XSSFRow row) {
+        return formatter.formatCellValue(row.getCell(8)).replaceAll(",", "");
     }
 
     private static int parseInt(DataFormatter formatter, XSSFRow row, int cellIndex) {
@@ -50,7 +54,7 @@ public record LotteryHistoryInfo(
     public static List<LotteryHistory> toEntities(List<LotteryHistoryInfo> historyInfos) {
         return historyInfos.stream()
                 .map(LotteryHistoryInfo::toEntity)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private static LotteryHistory toEntity(LotteryHistoryInfo info) {

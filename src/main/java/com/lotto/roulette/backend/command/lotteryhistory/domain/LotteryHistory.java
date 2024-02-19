@@ -17,7 +17,7 @@ public class LotteryHistory {
     private LotteryNumber lotteryNumber;
 
     @Column(nullable = false)
-    private String firstPrizeAmount;
+    private Long firstPrizeAmount;
 
     @Column(nullable = false)
     private Integer winnerCount;
@@ -25,12 +25,12 @@ public class LotteryHistory {
     @Column(nullable = false)
     private Integer round;
 
-    public static LotteryHistory create(LotteryNumber lotteryNumber, String firstPrizeAmount,
+    public static LotteryHistory create(LotteryNumber lotteryNumber, Long firstPrizeAmount,
                                         Integer winnerCount, Integer round) {
         return new LotteryHistory(lotteryNumber, firstPrizeAmount, winnerCount, round);
     }
 
-    private LotteryHistory(LotteryNumber lotteryNumber, String firstPrizeAmount,
+    private LotteryHistory(LotteryNumber lotteryNumber, Long firstPrizeAmount,
                            Integer winnerCount, Integer round) {
         this.lotteryNumber = lotteryNumber;
         this.firstPrizeAmount = firstPrizeAmount;
