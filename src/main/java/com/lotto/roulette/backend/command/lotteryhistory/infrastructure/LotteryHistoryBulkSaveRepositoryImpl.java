@@ -22,22 +22,22 @@ public class LotteryHistoryBulkSaveRepositoryImpl implements LotteryHistoryBulkS
                     "first_prize_amount, " +
                     "winner_count, " +
                     "round, " +
-                    "first_lotto_number, " +
-                    "second_lotto_number, " +
-                    "third_lotto_number, " +
-                    "fourth_lotto_number, " +
-                    "fifth_lotto_number, " +
-                    "sixth_lotto_number" +
+                    "first_lottery_number, " +
+                    "second_lottery_number, " +
+                    "third_lottery_number, " +
+                    "fourth_lottery_number, " +
+                    "fifth_lottery_number, " +
+                    "sixth_lottery_number" +
                     ") VALUES (" +
                     ":first_prize_amount, " +
                     ":winner_count, " +
                     ":round, " +
-                    ":first_lotto_number, " +
-                    ":second_lotto_number, " +
-                    ":third_lotto_number, " +
-                    ":fourth_lotto_number, " +
-                    ":fifth_lotto_number, " +
-                    ":sixth_lotto_number" +
+                    ":first_lottery_number, " +
+                    ":second_lottery_number, " +
+                    ":third_lottery_number, " +
+                    ":fourth_lottery_number, " +
+                    ":fifth_lottery_number, " +
+                    ":sixth_lottery_number" +
                     ")";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;

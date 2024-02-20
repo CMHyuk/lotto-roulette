@@ -14,12 +14,12 @@ import static java.lang.Long.parseLong;
 
 public record LotteryHistoryInfo(
         int round,
-        int firstLottoNumber,
-        int secondLottoNumber,
-        int thirdLottoNumber,
-        int fourthLottoNumber,
-        int fifthLottoNumber,
-        int sixthLottoNumber,
+        int firstLotteryNumber,
+        int secondLotteryNumber,
+        int thirdLotteryNumber,
+        int fourthLotteryNumber,
+        int fifthLotteryNumber,
+        int sixthLotteryNumber,
         int bonusNumber,
         Long firstPrizeAmount,
         int winnerCount
@@ -60,12 +60,12 @@ public record LotteryHistoryInfo(
     private static LotteryHistory toEntity(LotteryHistoryInfo info) {
         return LotteryHistory.create(
                 LotteryNumber.create(
-                        info.firstLottoNumber(),
-                        info.secondLottoNumber(),
-                        info.thirdLottoNumber(),
-                        info.fourthLottoNumber(),
-                        info.fifthLottoNumber(),
-                        info.sixthLottoNumber()
+                        info.firstLotteryNumber(),
+                        info.secondLotteryNumber(),
+                        info.thirdLotteryNumber(),
+                        info.fourthLotteryNumber(),
+                        info.fifthLotteryNumber(),
+                        info.sixthLotteryNumber()
                 ),
                 info.firstPrizeAmount(),
                 info.winnerCount(),

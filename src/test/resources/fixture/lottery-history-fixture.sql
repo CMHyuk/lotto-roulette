@@ -1,6 +1,6 @@
 INSERT INTO lottery_history (id, first_prize_amount, winner_count,
-                             first_lotto_number, second_lotto_number, third_lotto_number,
-                             fourth_lotto_number, fifth_lotto_number, sixth_lotto_number,
+                             first_lottery_number, second_lottery_number, third_lottery_number,
+                             fourth_lottery_number, fifth_lottery_number, sixth_lottery_number,
                              round)
 VALUES (1, 1000000000, 3, 1, 2, 3, 4, 5, 6, 1),
        (2, 800000000, 2, 10, 20, 30, 40, 50, 60, 2),
