@@ -1,6 +1,8 @@
 package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
+import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryApiResponse;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.common.exception.InternalServerErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +22,17 @@ import static java.util.stream.IntStream.range;
 public class LotteryHistoryParser {
 
     private static final DataFormatter formatter = new DataFormatter();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static List<LotteryHistory> parseLotteryWinningInfo(MultipartFile excel) {
+    public static LotteryHistoryApiResponse parseLotteryHistoryApi(String response) {
+        try {
+            return objectMapper.readValue(response, LotteryHistoryApiResponse.class);
+        } catch (Exception e) {
+            throw BusinessException.from(new InternalServerErrorCode(e.getMessage()));
+        }
+    }
+
+    public static List<LotteryHistory> parseLotteryHistoryExcel(MultipartFile excel) {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(excel.getInputStream());
             XSSFSheet worksheet = workbook.getSheetAt(0);

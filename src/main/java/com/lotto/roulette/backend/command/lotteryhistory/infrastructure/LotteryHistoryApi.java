@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface LotteryHistoryApi {
 
     @GetMapping("/common.do?method=getLottoNumber")
-    String getLottoWinnerInfo(@RequestParam int drwNo);
+    String getLotteryHistoryInfo(@RequestParam int drwNo);
 }
