@@ -1,10 +1,12 @@
 package com.lotto.roulette.backend.command.lotteryhistory.presentation;
 
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryFacade;
 import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,10 +15,17 @@ import org.springframework.web.multipart.MultipartFile;
 public class LotteryHistoryController {
 
     private final LotteryHistoryService lotteryHistoryService;
+    private final LotteryHistoryFacade lotteryHistoryFacade;
 
     @PostMapping("/lottery-histories")
     public ResponseEntity<Void> getLottoWinnerNumberInfo(@ModelAttribute MultipartFile excel) {
         lotteryHistoryService.saveAll(excel);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/lottery-numbers")
+    public ResponseEntity<Void> increaseLotteryNumberFrequency(@RequestParam int drwNo) {
+        lotteryHistoryFacade.increaseLotteryNumberFrequency(drwNo);
         return ResponseEntity.ok().build();
     }
 }
