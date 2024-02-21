@@ -29,11 +29,11 @@ class LotteryNumberFrequencyServiceTest extends ServiceTest {
         List<Integer> winningNumbers = List.of(44, 45);
 
         // when
-        lotteryNumberFrequencyService.save(winningNumbers);
+        lotteryNumberFrequencyService.increaseLotteryNumberFrequency(winningNumbers);
         LotteryNumberFrequency lotteryNumberFrequency = lotteryNumberFrequencyRepository.findByLotteryNumber(44)
                 .orElseThrow(() -> BusinessException.from(NOT_EXISTS_LOTTERY_FREQUENCY));
 
         // then
-        assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(24);
+        assertThat(lotteryNumberFrequency.getFrequency()).isEqualTo(172);
     }
 }
