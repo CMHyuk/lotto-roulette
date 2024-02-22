@@ -25,7 +25,7 @@ class LotteryNumberGeneratorControllerTest extends DocumentationTest {
                 .willReturn(new LottoNumberResponse("1 2 3 4 5 6"));
 
         // when
-        ResultActions result = mockMvc.perform(post("/lotto-numbers/{generator}", "chatgpt")
+        ResultActions result = mockMvc.perform(post("/lottery-numbers/{generator}", "chatgpt")
                 .contentType(MediaType.APPLICATION_JSON));
 
         // then

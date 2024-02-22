@@ -18,7 +18,7 @@ public class LottoNumberGeneratorAcceptanceTest extends AcceptanceTest {
         ExtractableResponse<Response> response = RestAssured.given().log().all()
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .post("/lotto-numbers/custom")
+                .post("/lottery-numbers/custom")
                 .then().log().all()
                 .extract();
 
