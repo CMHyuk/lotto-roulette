@@ -1,5 +1,7 @@
 package com.lotto.roulette.backend.command.lotteryhistory.dto;
 
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryHistoryInfo;
+
 import java.util.List;
 
 public record LotteryHistoryApiResponse(
@@ -21,5 +23,20 @@ public record LotteryHistoryApiResponse(
 
     public List<Integer> getLotteryNumbers() {
         return List.of(drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6);
+    }
+
+    public LotteryHistoryInfo toLotteryHistoryInfo() {
+        return new LotteryHistoryInfo(
+                drwNo,
+                drwtNo1,
+                drwtNo2,
+                drwtNo3,
+                drwtNo4,
+                drwtNo5,
+                drwtNo6,
+                bnusNo,
+                firstWinamnt,
+                firstPrzwnerCo
+        );
     }
 }

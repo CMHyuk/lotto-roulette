@@ -14,8 +14,8 @@ public class LotteryNumberGeneratorController {
 
     private final LotteryNumberGenerateService lotteryNumberGenerateService;
 
-    @PostMapping("/lotto-numbers/{generator}")
-    public ResponseEntity<LottoNumberResponse> getLottoNumbers(@PathVariable String generator) {
+    @PostMapping("/lottery-numbers/{generator}")
+    public ResponseEntity<LottoNumberResponse> generateLottoNumbers(@PathVariable String generator) {
         return ResponseEntity.ok(lotteryNumberGenerateService.generateLottoNumbers(generator));
     }
 }

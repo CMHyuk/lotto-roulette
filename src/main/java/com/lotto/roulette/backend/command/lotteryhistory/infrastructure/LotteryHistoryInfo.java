@@ -57,7 +57,7 @@ public record LotteryHistoryInfo(
                 .toList();
     }
 
-    private static LotteryHistory toEntity(LotteryHistoryInfo info) {
+    public static LotteryHistory toEntity(LotteryHistoryInfo info) {
         return LotteryHistory.create(
                 LotteryNumber.create(
                         info.firstLotteryNumber(),
