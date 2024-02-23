@@ -15,8 +15,8 @@ public class LotteryHistoryController {
     private final LotteryHistoryService lotteryHistoryService;
 
     @PostMapping("/lottery-histories")
-    public ResponseEntity<Void> getLottoWinnerNumberInfo(@ModelAttribute MultipartFile excel) {
-        lotteryHistoryService.saveAll(excel);
+    public ResponseEntity<Void> getLottoWinnerNumberInfo(@ModelAttribute MultipartFile lotteryHistoryExcel) {
+        lotteryHistoryService.saveAll(lotteryHistoryExcel);
         return ResponseEntity.ok().build();
     }
 }

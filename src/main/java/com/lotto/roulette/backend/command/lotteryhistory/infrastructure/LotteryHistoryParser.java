@@ -32,9 +32,9 @@ public class LotteryHistoryParser {
         }
     }
 
-    public static List<LotteryHistory> parseLotteryHistoryExcel(MultipartFile excel) {
+    public static List<LotteryHistory> parseLotteryHistoryExcel(MultipartFile lotteryHistoryExcel) {
         try {
-            XSSFWorkbook workbook = new XSSFWorkbook(excel.getInputStream());
+            XSSFWorkbook workbook = new XSSFWorkbook(lotteryHistoryExcel.getInputStream());
             XSSFSheet worksheet = workbook.getSheetAt(0);
             List<LotteryHistoryInfo> historyInfos = range(1, worksheet.getPhysicalNumberOfRows())
                     .mapToObj(worksheet::getRow)

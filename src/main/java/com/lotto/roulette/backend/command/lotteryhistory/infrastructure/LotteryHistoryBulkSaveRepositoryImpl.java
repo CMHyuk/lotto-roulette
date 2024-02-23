@@ -43,12 +43,12 @@ public class LotteryHistoryBulkSaveRepositoryImpl implements LotteryHistoryBulkS
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
-    public void saveAll(MultipartFile excel) {
-        jdbcTemplate.batchUpdate(INSERT_SQL, generateParameterSource(excel));
+    public void saveAll(MultipartFile lotteryHistoryExcel) {
+        jdbcTemplate.batchUpdate(INSERT_SQL, generateParameterSource(lotteryHistoryExcel));
     }
 
-    private SqlParameterSource[] generateParameterSource(MultipartFile excel) {
-        List<LotteryHistory> lotteryHistories = LotteryHistoryParser.parseLotteryHistoryExcel(excel);
+    private SqlParameterSource[] generateParameterSource(MultipartFile lotteryHistoryExcel) {
+        List<LotteryHistory> lotteryHistories = LotteryHistoryParser.parseLotteryHistoryExcel(lotteryHistoryExcel);
         return lotteryHistories.stream()
                 .map(artist -> new MapSqlParameterSource(generateParams(artist)))
                 .toArray(SqlParameterSource[]::new);

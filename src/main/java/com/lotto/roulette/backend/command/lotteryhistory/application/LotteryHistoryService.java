@@ -16,8 +16,8 @@ public class LotteryHistoryService {
     private final LotteryHistoryBulkSaveRepository lotteryHistoryBulkSaveRepository;
     private final LotteryHistoryRepository lotteryHistoryRepository;
 
-    public void saveAll(MultipartFile excel) {
-        lotteryHistoryBulkSaveRepository.saveAll(excel);
+    public void saveAll(MultipartFile lotteryHistoryExcel) {
+        lotteryHistoryBulkSaveRepository.saveAll(lotteryHistoryExcel);
     }
 
     public void save(LotteryHistory lotteryHistory) {
