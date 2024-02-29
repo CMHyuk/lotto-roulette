@@ -19,7 +19,7 @@ public class LotteryScheduler {
     private final LotteryNumberFrequencyService lotteryNumberFrequencyService;
     private final LotteryHistoryService lotteryHistoryService;
 
-    @Scheduled(cron = "0 0 21 * * SAT")
+    @Scheduled(cron = "15 45 20 * * SAT")
     public void increaseLotteryNumberFrequency() {
         Integer drwNo = lotteryHistoryRepository.findLatestRound();
         LotteryHistoryApiResponse lotteryHistory = lotteryHistoryProvider.getLotteryHistory(drwNo);
@@ -27,11 +27,12 @@ public class LotteryScheduler {
         lotteryNumberFrequencyService.increaseLotteryNumberFrequency(lotteryNumbers);
     }
 
-    @Scheduled(cron = "0 0 21 * * SAT")
+    @Scheduled(cron = "0 45 20 * * SAT")
     public void saveLotteryHistory() {
         Integer drwNo = lotteryHistoryRepository.findLatestRound();
         LotteryHistoryApiResponse response = lotteryHistoryProvider.getLotteryHistory(drwNo + 1);
         LotteryHistory lotteryHistory = LotteryHistoryInfo.toEntity(response.toLotteryHistoryInfo());
         lotteryHistoryService.save(lotteryHistory);
     }
+
 }
