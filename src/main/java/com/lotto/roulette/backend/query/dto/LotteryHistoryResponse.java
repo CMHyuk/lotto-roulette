@@ -23,7 +23,7 @@ public record LotteryHistoryResponse(
                 lotteryHistory.getLotteryNumber().getSixthLotteryNumber(),
                 lotteryHistory.getFirstPrizeAmount(),
                 lotteryHistory.getWinnerCount(),
-                lotteryHistory.getWinnerCount()
+                lotteryHistory.getRound()
         );
     }
 
