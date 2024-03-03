@@ -31,4 +31,22 @@ public class LottoHistoryQueryAcceptanceTest extends AcceptanceTest {
                 () -> assertThat((String) response.jsonPath().get("topPrize")).isEqualTo("₩1,500,000,000")
         );
     }
+
+    @Test
+    void 로또_당첨_회차로_조회한다() {
+        // given
+        int round = 1;
+
+        // when
+        ExtractableResponse<Response> response = RestAssured.given().log().all()
+                .when()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .param("round", round)
+                .get("/lottery-history")
+                .then().log().all()
+                .extract();
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+    }
 }
