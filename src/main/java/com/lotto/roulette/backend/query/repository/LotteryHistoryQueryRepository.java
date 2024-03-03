@@ -10,4 +10,6 @@ public interface LotteryHistoryQueryRepository extends JpaRepository<LotteryHist
 
     @Query("SELECT MAX(l.firstPrizeAmount) FROM LotteryHistory l")
     Optional<Long> findTopPrize();
+
+    Optional<LotteryHistory> findByRound(Integer round);
 }
