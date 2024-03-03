@@ -20,7 +20,7 @@ public class LotteryHistoryQueryController {
         return ResponseEntity.ok(lotteryHistoryQueryService.getTopPrize());
     }
 
-    @GetMapping("/lottery-hisotry")
+    @GetMapping("/lottery-history")
     public ResponseEntity<LotteryHistoryResponse> getLotteryHistory(@RequestParam Integer round) {
         return ResponseEntity.ok(lotteryHistoryQueryService.getLotteryHistory(round));
     }
