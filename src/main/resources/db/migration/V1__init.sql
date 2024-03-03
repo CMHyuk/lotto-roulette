@@ -13,6 +13,8 @@ CREATE TABLE lottery_history
     CONSTRAINT pk_lotteryhistory PRIMARY KEY (id)
 );
 
+CREATE INDEX IDX_ROUND ON lottery_history (round);
+
 CREATE TABLE lottery_number_frequency
 (
     id             BIGINT AUTO_INCREMENT NOT NULL,
