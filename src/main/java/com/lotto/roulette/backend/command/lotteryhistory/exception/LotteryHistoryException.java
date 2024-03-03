@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 public enum LotteryHistoryException implements ErrorCode {
 
     NOT_EXISTS_LOTTERY_HISTORY(404, "존재하지 않는 로또 당첨 이력입니다."),
-    INVALID_LOTTERY_NUMBER(400, "존재하지 않는 로또 당첨 이력입니다."),
+    INVALID_LOTTERY_NUMBER(400, "알맞지 않은 로또 번호입니다."),
     NOT_EXISTS_EXCEL_DATA(404, "해당 엑셀에 데이터가 없습니다.")
     ;
 
