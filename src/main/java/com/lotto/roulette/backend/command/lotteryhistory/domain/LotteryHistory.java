@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(indexes = @Index(name = "IDX_ROUND", columnList = "round"))
 @Getter
 public class LotteryHistory {
 
