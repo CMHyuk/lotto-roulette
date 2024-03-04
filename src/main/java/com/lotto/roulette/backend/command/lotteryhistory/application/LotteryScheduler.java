@@ -14,25 +14,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LotteryScheduler {
 
+    private static final String CRON_EXPRESSION = "0 45 20 * * SAT";
+
     private final LotteryHistoryRepository lotteryHistoryRepository;
     private final LotteryHistoryProvider lotteryHistoryProvider;
     private final LotteryNumberFrequencyService lotteryNumberFrequencyService;
     private final LotteryHistoryService lotteryHistoryService;
 
-    @Scheduled(cron = "15 45 20 * * SAT")
-    public void increaseLotteryNumberFrequency() {
-        Integer drwNo = lotteryHistoryRepository.findLatestRound();
-        LotteryHistoryApiResponse lotteryHistory = lotteryHistoryProvider.getLotteryHistory(drwNo);
-        List<Integer> lotteryNumbers = lotteryHistory.getLotteryNumbers();
-        lotteryNumberFrequencyService.increaseLotteryNumberFrequency(lotteryNumbers);
-    }
-
-    @Scheduled(cron = "0 45 20 * * SAT")
-    public void saveLotteryHistory() {
+    @Scheduled(cron = CRON_EXPRESSION)
+    public void saveLotteryHistoryAndIncreaseFrequency() {
         Integer drwNo = lotteryHistoryRepository.findLatestRound();
         LotteryHistoryApiResponse response = lotteryHistoryProvider.getLotteryHistory(drwNo + 1);
         LotteryHistory lotteryHistory = LotteryHistoryInfo.toEntity(response.toLotteryHistoryInfo());
         lotteryHistoryService.save(lotteryHistory);
+        List<Integer> lotteryNumbers = response.getLotteryNumbers();
+        lotteryNumberFrequencyService.increaseLotteryNumberFrequency(lotteryNumbers);
     }
-
 }
