@@ -19,25 +19,13 @@ public class LotteryHistoryBulkSaveRepositoryImpl implements LotteryHistoryBulkS
 
     private static final String INSERT_SQL =
             "INSERT INTO lottery_history(" +
-                    "first_prize_amount, " +
-                    "winner_count, " +
-                    "round, " +
-                    "first_lottery_number, " +
-                    "second_lottery_number, " +
-                    "third_lottery_number, " +
-                    "fourth_lottery_number, " +
-                    "fifth_lottery_number, " +
-                    "sixth_lottery_number" +
+                    "first_prize_amount, winner_count, round, " +
+                    "first_lottery_number, second_lottery_number, third_lottery_number, " +
+                    "fourth_lottery_number, fifth_lottery_number, sixth_lottery_number" +
                     ") VALUES (" +
-                    ":first_prize_amount, " +
-                    ":winner_count, " +
-                    ":round, " +
-                    ":first_lottery_number, " +
-                    ":second_lottery_number, " +
-                    ":third_lottery_number, " +
-                    ":fourth_lottery_number, " +
-                    ":fifth_lottery_number, " +
-                    ":sixth_lottery_number" +
+                    ":first_prize_amount, :winner_count, :round, " +
+                    ":first_lottery_number, :second_lottery_number, :third_lottery_number, " +
+                    ":fourth_lottery_number, :fifth_lottery_number, :sixth_lottery_number" +
                     ")";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
