@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
 
@@ -18,12 +20,14 @@ import static java.util.stream.Collectors.toMap;
 public class ErrorCodeController {
 
     @GetMapping
-    public Map<Integer, ErrorCodeResponse> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
+    public Map<Integer, List<ErrorCodeResponse>> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
         Class<?> errorCodeType = Class.forName(className);
         ErrorCode[] errorCodes = (ErrorCode[]) errorCodeType.getEnumConstants();
         return Arrays.stream(errorCodes)
-                .collect(toMap(ErrorCode::getHttpStatusCode, ErrorCodeResponse::new));
+                .collect(Collectors.groupingBy(ErrorCode::getHttpStatusCode,
+                        Collectors.mapping(ErrorCodeResponse::new, Collectors.toList())));
     }
+
 
     record ErrorCodeResponse(
             Integer httpStatus,

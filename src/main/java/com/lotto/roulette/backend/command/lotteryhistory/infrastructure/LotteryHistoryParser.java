@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
 import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryApiResponse;
 import com.lotto.roulette.backend.common.exception.BusinessException;
-import com.lotto.roulette.backend.common.exception.InternalServerErrorCode;
+import com.lotto.roulette.backend.common.exception.presntation.InternalServerErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;

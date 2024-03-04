@@ -59,8 +59,8 @@ public class DocumentationTest {
     protected List<FieldDescriptor> getErrorDescriptor(ErrorCode[] errorCodes) {
         return Arrays.stream(errorCodes)
                 .flatMap(errorCode -> Stream.of(
-                        fieldWithPath(errorCode.getHttpStatusCode() + ".httpStatus").description(errorCode.getHttpStatusCode()),
-                        fieldWithPath(errorCode.getHttpStatusCode() + ".message").description(errorCode.getErrorMessage())
+                        fieldWithPath(errorCode.getValue() + ".httpStatus").description(errorCode.getHttpStatusCode()),
+                        fieldWithPath(errorCode.getValue() + ".message").description(errorCode.getErrorMessage())
                 )).toList();
     }
 }

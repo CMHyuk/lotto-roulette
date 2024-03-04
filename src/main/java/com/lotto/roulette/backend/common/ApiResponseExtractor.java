@@ -1,7 +1,7 @@
 package com.lotto.roulette.backend.common;
 
 import com.lotto.roulette.backend.common.exception.BusinessException;
-import com.lotto.roulette.backend.common.exception.InternalServerErrorCode;
+import com.lotto.roulette.backend.common.exception.presntation.InternalServerErrorCode;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
