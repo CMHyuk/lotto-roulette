@@ -9,9 +9,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public enum LotteryNumberGeneratorException implements ErrorCode {
 
-    NOT_EXISTS_PROVIDER(404, "존재하지 않는 번호 생성 방식입니다."),
+    NOT_EXISTS_PROVIDER(4001, 404, "존재하지 않는 번호 생성 방식입니다."),
     ;
 
+    private final int value;
     private final int httpStatusCode;
     private final String errorMessage;
 }
