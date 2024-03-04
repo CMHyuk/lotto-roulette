@@ -3,14 +3,12 @@ package com.lotto.roulette.backend.query.service;
 import com.lotto.roulette.backend.query.dto.LotteryHistoryResponse;
 import com.lotto.roulette.backend.query.dto.TopPrizeResponse;
 import com.lotto.roulette.backend.support.enviroment.ServiceTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Sql("/fixture/lottery-history-fixture.sql")
