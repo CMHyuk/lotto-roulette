@@ -3,6 +3,7 @@ package com.lotto.roulette.backend.query.service;
 import com.lotto.roulette.backend.query.dto.LotteryNumberFrequencyResponse;
 import com.lotto.roulette.backend.query.repository.LotteryNumberFrequencyQueryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ public class LotteryNumberFrequencyQueryService {
 
     private final LotteryNumberFrequencyQueryRepository lotteryNumberFrequencyQueryRepository;
 
+    @Cacheable("LotteryNumberFrequency")
     public List<LotteryNumberFrequencyResponse> findAll() {
         return lotteryNumberFrequencyQueryRepository.findAll()
                 .stream()
