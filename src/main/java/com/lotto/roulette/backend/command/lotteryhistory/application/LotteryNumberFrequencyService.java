@@ -16,7 +16,7 @@ public class LotteryNumberFrequencyService {
 
     private final LotteryNumberFrequencyRepository lotteryNumberFrequencyRepository;
 
-    @CacheEvict("LotteryNumberFrequency")
+    @CacheEvict(value = "LotteryNumberFrequency", allEntries = true)
     public void increaseLotteryNumberFrequency(List<Integer> lotteryNumbers) {
         for (Integer winningNumber : lotteryNumbers) {
             LotteryNumberFrequency frequency = lotteryNumberFrequencyRepository.findByLotteryNumber(winningNumber)
