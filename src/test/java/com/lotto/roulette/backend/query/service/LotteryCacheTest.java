@@ -9,6 +9,7 @@ import com.lotto.roulette.backend.support.enviroment.ServiceTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -71,5 +72,23 @@ public class LotteryCacheTest extends ServiceTest {
 
         // then
         verify(lotteryNumberFrequencyQueryRepository, times(1)).findAll();
+    }
+
+    @Test
+    void 로또_당첨_정보를_페이징할_때_캐시가_적용_됐는지_확인한다() {
+        // given
+        LotteryHistory lotteryHistory = LotteryHistory.create(
+                LotteryNumber.create(1, 2, 3, 4, 5, 6),
+                1000000000L, 3, 4);
+        Pageable pageable = Pageable.ofSize(1);
+        when(lotteryHistoryQueryRepository.findTop10ByOrderByRoundDesc(pageable))
+                .thenReturn(List.of(lotteryHistory));
+
+        // when
+        IntStream.range(0, 10)
+                .forEach(i -> lotteryHistoryQueryService.getLotteryHistories(pageable));
+
+        // then
+        verify(lotteryHistoryQueryRepository, times(1)).findTop10ByOrderByRoundDesc(pageable);
     }
 }

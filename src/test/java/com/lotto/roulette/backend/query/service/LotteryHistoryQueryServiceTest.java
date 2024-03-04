@@ -7,7 +7,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.jdbc.Sql;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,6 +47,18 @@ class LotteryHistoryQueryServiceTest extends ServiceTest {
                             4, 5, 6,
                             1000000000L, 3, 1)
             );
+        }
+
+        @Test
+        void 페이지_단위로_조회한다() {
+            // given
+            Pageable pageable = Pageable.ofSize(1);
+
+            // when
+            List<LotteryHistoryResponse> actual = lotteryHistoryQueryService.getLotteryHistories(pageable);
+
+            // then
+            assertThat(actual.size()).isEqualTo(10);
         }
     }
 }
