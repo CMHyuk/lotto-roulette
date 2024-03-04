@@ -5,6 +5,7 @@ import com.lotto.roulette.backend.query.dto.LotteryHistoryResponse;
 import com.lotto.roulette.backend.query.dto.TopPrizeResponse;
 import com.lotto.roulette.backend.query.repository.LotteryHistoryQueryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +22,14 @@ public class LotteryHistoryQueryService {
 
     private final LotteryHistoryQueryRepository lotteryHistoryQueryRepository;
 
+    @Cacheable("topPrize")
     public TopPrizeResponse getTopPrize() {
         Long firstPrizeAmount = lotteryHistoryQueryRepository.findTopPrize()
                 .orElseThrow(() -> BusinessException.from(NOT_EXISTS_LOTTERY_HISTORY));
         return new TopPrizeResponse(formatToKRW(firstPrizeAmount));
     }
 
+    @Cacheable("lotteryHistory")
     public LotteryHistoryResponse getLotteryHistory(Integer round) {
         return lotteryHistoryQueryRepository.findByRound(round)
                 .map(LotteryHistoryResponse::new)
