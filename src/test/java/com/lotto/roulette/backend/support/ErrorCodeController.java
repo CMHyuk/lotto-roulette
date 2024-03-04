@@ -20,12 +20,11 @@ import static java.util.stream.Collectors.toMap;
 public class ErrorCodeController {
 
     @GetMapping
-    public Map<Integer, List<ErrorCodeResponse>> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
+    public Map<Integer, Object> getErrorCode(@RequestParam(name = "className") String className) throws ClassNotFoundException {
         Class<?> errorCodeType = Class.forName(className);
         ErrorCode[] errorCodes = (ErrorCode[]) errorCodeType.getEnumConstants();
         return Arrays.stream(errorCodes)
-                .collect(Collectors.groupingBy(ErrorCode::getHttpStatusCode,
-                        Collectors.mapping(ErrorCodeResponse::new, Collectors.toList())));
+                .collect(toMap(ErrorCode::getValue, ErrorCodeResponse::new));
     }
 
 
