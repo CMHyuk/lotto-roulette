@@ -15,6 +15,9 @@ CREATE TABLE lottery_history
 
 CREATE INDEX IDX_ROUND ON lottery_history (round);
 
+ALTER TABLE lottery_history
+    ADD CONSTRAINT uc_lottery_history_round UNIQUE (round);
+
 CREATE TABLE lottery_number_frequency
 (
     id             BIGINT AUTO_INCREMENT NOT NULL,

@@ -7,7 +7,11 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = @Index(name = "IDX_ROUND", columnList = "round"))
+@Table(indexes = @Index(name = "IDX_ROUND", columnList = "round"),
+        uniqueConstraints = {@UniqueConstraint(
+                name = "uc_lottery_history_round",
+                columnNames = {"round"}
+        )})
 @Getter
 public class LotteryHistory {
 
