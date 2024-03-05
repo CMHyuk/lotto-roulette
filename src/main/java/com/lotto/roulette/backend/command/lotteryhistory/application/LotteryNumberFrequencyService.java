@@ -25,7 +25,7 @@ public class LotteryNumberFrequencyService {
         increaseLotteryNumberFrequency(lotteryNumbers);
     }
 
-    @CacheEvict(value = "LotteryNumberFrequency", allEntries = true)
+    @CacheEvict(value = {"LotteryNumberFrequency", "LotteryNumberTopSix"}, allEntries = true)
     public void increaseLotteryNumberFrequency(List<Integer> lotteryNumbers) {
         lotteryNumberFrequencyBulkUpdateRepository.updateAll(lotteryNumbers);
     }
