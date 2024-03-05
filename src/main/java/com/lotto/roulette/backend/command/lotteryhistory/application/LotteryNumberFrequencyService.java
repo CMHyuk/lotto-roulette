@@ -19,6 +19,7 @@ public class LotteryNumberFrequencyService {
     private final LotteryHistoryRepository lotteryHistoryRepository;
 
     public void insertLotteryNumberFrequency() {
+        lotteryNumberFrequencyBulkUpdateRepository.saveAll();
         List<LotteryHistoryNumbersDto> lotteryHistoryNumbers = lotteryHistoryRepository.findLotteryHistoryNumbers();
         List<Integer> lotteryNumbers = LotteryHistoryNumbersDto.toLotteryHistoryNumbers(lotteryHistoryNumbers);
         increaseLotteryNumberFrequency(lotteryNumbers);

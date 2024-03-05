@@ -28,12 +28,7 @@ public class LotteryNumberFrequencyBulkRepositoryImpl implements LotteryNumberFr
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
-    public void updateAll(List<Integer> lotteryNumbers) {
-        insertInitialData();
-        jdbcTemplate.batchUpdate(UPDATE_SQL, generateParameterSource(lotteryNumbers));
-    }
-
-    public void insertInitialData() {
+    public void saveAll() {
         List<Map<String, Object>> batchValues = IntStream.rangeClosed(1, 45)
                 .mapToObj(lotteryNumber -> {
                     Map<String, Object> params = new HashMap<>();
@@ -44,6 +39,11 @@ public class LotteryNumberFrequencyBulkRepositoryImpl implements LotteryNumberFr
                 .toList();
 
         jdbcTemplate.batchUpdate(INSERT_SQL, batchValues.toArray(new Map[0]));
+    }
+
+    @Override
+    public void updateAll(List<Integer> lotteryNumbers) {
+        jdbcTemplate.batchUpdate(UPDATE_SQL, generateParameterSource(lotteryNumbers));
     }
 
     private SqlParameterSource[] generateParameterSource(List<Integer> lotteryNumbers) {
