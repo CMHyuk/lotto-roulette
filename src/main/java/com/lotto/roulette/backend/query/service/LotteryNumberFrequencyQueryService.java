@@ -25,4 +25,12 @@ public class LotteryNumberFrequencyQueryService {
                 .map(lotteryNumberFrequency -> of(lotteryNumberFrequency.getLotteryNumber(), lotteryNumberFrequency.getFrequency()))
                 .toList();
     }
+
+    @Cacheable("LotteryNumberTopSix")
+    public List<LotteryNumberFrequencyResponse> findTop6MostFrequentNumbers() {
+        return lotteryNumberFrequencyQueryRepository.findTop6MostFrequentNumbers()
+                .stream()
+                .map(lotteryNumberFrequency -> of(lotteryNumberFrequency.getLotteryNumber(), lotteryNumberFrequency.getFrequency()))
+                .toList();
+    }
 }

@@ -15,7 +15,8 @@ import java.util.List;
 @Configuration
 public class LotteryHistoryCacheConfig {
 
-    private static final List<String> CACHE_NAMES = List.of("topPrize", "lotteryHistory", "LotteryNumberFrequency");
+    private static final List<String> CACHE_NAMES =
+            List.of("topPrize", "lotteryHistory", "LotteryNumberFrequency", "LotteryNumberTopSix");
 
     @Bean
     public CacheManager cacheManager() {
