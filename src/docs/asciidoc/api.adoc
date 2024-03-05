@@ -22,3 +22,4 @@ include::{snippets}/lottery-history-error-code/response-body.adoc[]
 
 == 로또 번호 빈도 수 조회
 operation::get-lottery-number-frequency[snippets='http-request,http-response,response-fields']
+operation::get-lottery-number-frequency-top-six[snippets='http-request,http-response,response-fields']
