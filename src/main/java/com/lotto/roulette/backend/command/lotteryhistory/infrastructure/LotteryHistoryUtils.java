@@ -2,7 +2,8 @@ package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
-import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryApiResponse;
+import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotteryapi.LotteryHistoryApiResponse;
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.common.exception.presntation.InternalServerErrorCode;
 import lombok.RequiredArgsConstructor;

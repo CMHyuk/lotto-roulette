@@ -2,8 +2,8 @@ package com.lotto.roulette.backend.command.lotteryhistory.application;
 
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistoryRepository;
-import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryApiResponse;
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotteryapi.LotteryHistoryApiResponse;
+import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
