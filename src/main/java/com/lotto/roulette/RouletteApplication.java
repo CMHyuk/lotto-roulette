@@ -1,6 +1,7 @@
 package com.lotto.roulette;
 
 import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
 import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryHistoryUtils;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.io.File;
 public class RouletteApplication {
 
     private final LotteryHistoryService lotteryHistoryService;
+    private final LotteryNumberFrequencyService lotteryNumberFrequencyService;
 
     public static void main(String[] args) {
         SpringApplication.run(RouletteApplication.class, args);
@@ -31,5 +33,6 @@ public class RouletteApplication {
         File excel = new File("src/main/resources/lotto.xlsx");
         MultipartFile lotteryHistoryExcel = LotteryHistoryUtils.convertFileToMultipartFile(excel);
         lotteryHistoryService.saveAll(lotteryHistoryExcel);
+        lotteryNumberFrequencyService.insertLotteryNumberFrequency();
     }
 }
