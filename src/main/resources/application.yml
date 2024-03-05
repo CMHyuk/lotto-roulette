@@ -23,3 +23,11 @@ spring:
     activate:
       on-profile: ci
     import: application-ci.yml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+    import:
+      - classpath:yml-config/application-dev.yml
