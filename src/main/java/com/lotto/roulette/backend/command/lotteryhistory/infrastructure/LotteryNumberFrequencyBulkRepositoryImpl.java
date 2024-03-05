@@ -23,7 +23,7 @@ public class LotteryNumberFrequencyBulkRepositoryImpl implements LotteryNumberFr
 
     private static final String UPDATE_SQL =
             "UPDATE lottery_number_frequency SET frequency = frequency + 1 " +
-                    "WHERE lottery_number IN (:lottery_number)";
+                    "WHERE lottery_number = :lottery_number";
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
