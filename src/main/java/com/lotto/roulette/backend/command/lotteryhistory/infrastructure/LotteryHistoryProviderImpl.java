@@ -14,6 +14,6 @@ public class LotteryHistoryProviderImpl implements LotteryHistoryProvider {
     @Override
     public LotteryHistoryApiResponse getLotteryHistory(int drwNo) {
         String response = lotteryHistoryApi.getLotteryHistoryInfo(drwNo);
-        return LotteryHistoryParser.parseLotteryHistoryApi(response);
+        return LotteryHistoryUtils.parseLotteryHistoryApi(response);
     }
 }

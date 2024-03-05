@@ -36,7 +36,7 @@ public class LotteryHistoryBulkSaveRepositoryImpl implements LotteryHistoryBulkS
     }
 
     private SqlParameterSource[] generateParameterSource(MultipartFile lotteryHistoryExcel) {
-        List<LotteryHistory> lotteryHistories = LotteryHistoryParser.parseLotteryHistoryExcel(lotteryHistoryExcel);
+        List<LotteryHistory> lotteryHistories = LotteryHistoryUtils.parseLotteryHistoryExcel(lotteryHistoryExcel);
         return lotteryHistories.stream()
                 .map(artist -> new MapSqlParameterSource(generateParams(artist)))
                 .toArray(SqlParameterSource[]::new);
