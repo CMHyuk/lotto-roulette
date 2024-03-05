@@ -15,7 +15,7 @@ public record LotteryHistoryNumbersDto(
         return lotteryHistoryNumbers.stream()
                 .map(LotteryHistoryNumbersDto::toList)
                 .flatMap(List::stream)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private List<Integer> toList() {
