@@ -31,4 +31,21 @@ public class LotteryNumberFrequencyAcceptanceTest extends AcceptanceTest {
                 () -> assertThat(response.jsonPath().getList(".")).hasSize(45)
         );
     }
+
+    @Test
+    void 가장_많이_나온_로또_번호_6개를_조회한다() {
+        // when
+        ExtractableResponse<Response> response = RestAssured.given().log().all()
+                .when()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .get("/lottery-number-frequency/top-six")
+                .then().log().all()
+                .extract();
+
+        // then
+        assertAll(
+                () -> assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value()),
+                () -> assertThat(response.jsonPath().getList(".")).hasSize(6)
+        );
+    }
 }
