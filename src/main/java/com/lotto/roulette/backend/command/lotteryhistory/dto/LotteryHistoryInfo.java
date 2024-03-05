@@ -1,4 +1,4 @@
-package com.lotto.roulette.backend.command.lotteryhistory.infrastructure;
+package com.lotto.roulette.backend.command.lotteryhistory.dto;
 
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumber;

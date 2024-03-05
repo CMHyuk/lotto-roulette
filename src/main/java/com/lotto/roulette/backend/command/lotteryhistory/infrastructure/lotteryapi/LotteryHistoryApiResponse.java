@@ -1,6 +1,6 @@
-package com.lotto.roulette.backend.command.lotteryhistory.dto;
+package com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotteryapi;
 
-import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.LotteryHistoryInfo;
+import com.lotto.roulette.backend.command.lotteryhistory.dto.LotteryHistoryInfo;
 
 import java.util.List;
 
