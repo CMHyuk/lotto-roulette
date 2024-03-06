@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  web:
+    container_name: lottery
+    image: cmhyuk/lottery-dev
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    depends_on:
+      mysql:
+        condition: service_healthy  # web 서비스가 mysql 컨테이너가 건강한 상태일 때에만 의존함
+    ports:
+      - "8080:8080"
+    networks:
+      - be-network
+
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_DATABASE: lottery
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 1234
+      LC_ALL: C.UTF-8
+    ports:
+      - "3306:3306"
+    command: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci"]
+    networks:
+      - be-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root --password=1234"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  be-network:
+    driver: bridge
