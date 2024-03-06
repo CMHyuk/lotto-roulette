@@ -1,3 +1,3 @@
-[submodule "yml-config"]
-	path = yml-config
+[submodule "src/main/resources/yml-config"]
+	path = src/main/resources/yml-config
 	url = https://github.com/CMHyuk/yml-config.git
