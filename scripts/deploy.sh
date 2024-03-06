@@ -18,6 +18,9 @@ else
   sleep 5
 fi
 
-DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
+# 디렉토리로 이동
+cd $DEPLOY_PATH
+
+DEPLOY_JAR=roulette-0.0.1-SNAPSHOT.jar
 echo "> DEPLOY_JAR 배포"    >> /home/ec2-user/action/deploy.log
 nohup java -jar -Dspring.profiles.active=dev $DEPLOY_JAR >> /home/ec2-user/deploy.log 2>/home/ec2-user/action/deploy_err.log &
