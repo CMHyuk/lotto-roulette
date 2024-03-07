@@ -38,7 +38,7 @@ public class LotteryHistoryQueryService {
                 .orElseGet(LotteryHistoryResponse::createEmpty);
     }
 
-    //@Cacheable("lotteryHistory")
+    @Cacheable("lotteryHistory")
     public List<LotteryHistoryResponse> getLotteryHistories(Pageable pageable) {
         return lotteryHistoryQueryRepository.findTop10ByOrderByRoundDesc(pageable)
                 .stream()
