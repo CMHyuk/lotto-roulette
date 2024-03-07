@@ -18,7 +18,7 @@ public class LotteryNumberFrequencyQueryService {
 
     private final LotteryNumberFrequencyQueryRepository lotteryNumberFrequencyQueryRepository;
 
-    //@Cacheable("LotteryNumberFrequency")
+    @Cacheable("LotteryNumberFrequency")
     public List<LotteryNumberFrequencyResponse> findAll() {
         return lotteryNumberFrequencyQueryRepository.findAll()
                 .stream()
@@ -26,7 +26,7 @@ public class LotteryNumberFrequencyQueryService {
                 .toList();
     }
 
-    //@Cacheable("LotteryNumberTopSix")
+    @Cacheable("LotteryNumberTopSix")
     public List<LotteryNumberFrequencyResponse> findTop6MostFrequentNumbers() {
         return lotteryNumberFrequencyQueryRepository.findTop6MostFrequentNumbers()
                 .stream()
