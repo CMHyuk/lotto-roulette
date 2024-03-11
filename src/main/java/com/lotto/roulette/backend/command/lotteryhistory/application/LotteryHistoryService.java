@@ -21,7 +21,7 @@ public class LotteryHistoryService {
         lotteryHistoryBulkSaveRepository.saveAll(lotteryHistoryExcel);
     }
 
-    @CacheEvict(value = "lotteryHistory", allEntries = true)
+    @CacheEvict(value = {"lotteryHistory", "topPrize"}, allEntries = true)
     public void save(LotteryHistory lotteryHistory) {
         lotteryHistoryRepository.save(lotteryHistory);
     }
