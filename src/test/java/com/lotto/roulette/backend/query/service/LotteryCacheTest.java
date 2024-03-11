@@ -80,6 +80,7 @@ public class LotteryCacheTest extends ServiceTest {
     }
 
     @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
     @DisplayName("회차로_검색할_때")
     class FindLotteryHistoryTest {
 
@@ -118,6 +119,7 @@ public class LotteryCacheTest extends ServiceTest {
     }
 
     @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
     @DisplayName("로또_당첨_번호들을_조회할_때")
     class FindLotteryNumberFrequencyTest {
 
@@ -150,6 +152,7 @@ public class LotteryCacheTest extends ServiceTest {
     }
 
     @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
     @DisplayName("로또_당첨_정보를_페이징할_때")
     class FindLotteryHistoriesTest {
 
