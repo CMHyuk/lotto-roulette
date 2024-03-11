@@ -1,15 +1,17 @@
 package com.lotto.roulette.backend.query.service;
 
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryService;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryHistory;
 import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumber;
-import com.lotto.roulette.backend.command.lotteryhistory.domain.LotteryNumberFrequency;
 import com.lotto.roulette.backend.query.repository.LotteryHistoryQueryRepository;
 import com.lotto.roulette.backend.query.repository.LotteryNumberFrequencyQueryRepository;
 import com.lotto.roulette.backend.support.enviroment.ServiceTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +19,14 @@ import java.util.stream.IntStream;
 
 import static org.mockito.Mockito.*;
 
+@Sql(value = {"/fixture/lottery-history-fixture.sql", "/fixture/lottery-number-frequency-fixture.sql"})
 public class LotteryCacheTest extends ServiceTest {
+
+    @Autowired
+    private LotteryHistoryService lotteryHistoryService;
+
+    @Autowired
+    private LotteryNumberFrequencyService lotteryNumberFrequencyService;
 
     @Autowired
     private LotteryHistoryQueryService lotteryHistoryQueryService;
@@ -31,64 +40,153 @@ public class LotteryCacheTest extends ServiceTest {
     @MockBean
     private LotteryNumberFrequencyQueryRepository lotteryNumberFrequencyQueryRepository;
 
-    @Test
-    void 최고_당첨_금액을_조회할_때_캐시가_적용_됐는지_확인한다() {
-        // given
-        when(lotteryHistoryQueryRepository.findTopPrize()).thenReturn(Optional.of(1000000000L));
+    @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+    @DisplayName("최고_당첨_금액을_조회할_때")
+    class FindTopPrizeTest {
 
-        // when
-        IntStream.range(0, 10)
-                .forEach(i -> lotteryHistoryQueryService.getTopPrize());
+        @Test
+        @Order(1)
+        void 캐시가_적용_됐는지_확인한다() {
+            // given
+            when(lotteryHistoryQueryRepository.findTopPrize()).thenReturn(Optional.of(1000000000L));
 
-        // then
-        verify(lotteryHistoryQueryRepository, times(1)).findTopPrize();
+            // when
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getTopPrize());
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findTopPrize();
+        }
+
+        @Test
+        @Order(2)
+        void 정보가_갱신되고_캐시가_갱신되는지_확인한다() {
+            // given
+            when(lotteryHistoryQueryRepository.findTopPrize()).thenReturn(Optional.of(1000000000L));
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getTopPrize());
+
+            // when
+            LotteryNumber lotteryNumber = LotteryNumber.create(1, 2, 3, 4, 5, 6);
+            LotteryHistory lotteryHistory = LotteryHistory.create(lotteryNumber, 1000000000L, 3, 11);
+            lotteryHistoryService.save(lotteryHistory);
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getTopPrize());
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findTopPrize();
+        }
     }
 
-    @Test
-    void 회차로_검색할_때_캐시가_적용_됐는지_확인한다() {
-        // given
-        int round = 1;
-        LotteryHistory lotteryHistory = LotteryHistory.create(
-                LotteryNumber.create(1, 2, 3, 4, 5, 6),
-                1000000000L, 3, 4);
-        when(lotteryHistoryQueryRepository.findByRound(round)).thenReturn(Optional.of(lotteryHistory));
+    @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+    @DisplayName("회차로_검색할_때")
+    class FindLotteryHistoryTest {
 
-        // when
-        IntStream.range(0, 10)
-                .forEach(i -> lotteryHistoryQueryService.getLotteryHistory(round));
+        @Test
+        @Order(3)
+        void 캐시가_적용_됐는지_확인한다() {
+            // given
+            int round = 1;
 
-        // then
-        verify(lotteryHistoryQueryRepository, times(1)).findByRound(round);
+            // when
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistory(round));
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findByRound(round);
+        }
+
+        @Test
+        @Order(4)
+        void 로또_당첨_정보가_업데이트_되고_캐시가_갱신_됐는지_확인한다() {
+            // given
+            int round = 1;
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistory(round));
+
+            // when
+            LotteryNumber lotteryNumber = LotteryNumber.create(1, 2, 3, 4, 5, 6);
+            LotteryHistory lotteryHistory = LotteryHistory.create(lotteryNumber, 1000000000L, 3, 11);
+            lotteryHistoryService.save(lotteryHistory);
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistory(round));
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findByRound(round);
+        }
     }
 
-    @Test
-    void 로또_당첨_번호들을_조회할_때_캐시가_적용_됐는지_확인한다() {
-        // given
-        when(lotteryNumberFrequencyQueryRepository.findAll()).thenReturn(List.of(new LotteryNumberFrequency(1)));
+    @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+    @DisplayName("로또_당첨_번호들을_조회할_때")
+    class FindLotteryNumberFrequencyTest {
 
-        // when
-        IntStream.range(0, 10)
-                .forEach(i -> lotteryNumberFrequencyQueryService.findAll());
+        @Test
+        @Order(5)
+        void 캐시가_적용_됐는지_확인한다() {
+            // when
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryNumberFrequencyQueryService.findAll());
 
-        // then
-        verify(lotteryNumberFrequencyQueryRepository, times(1)).findAll();
+            // then
+            verify(lotteryNumberFrequencyQueryRepository, times(1)).findAll();
+        }
+
+        @Test
+        @Order(6)
+        void 로또_당첨_정보가_업데이트_되고_캐시가_갱신_됐는지_확인한다() {
+            // given
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryNumberFrequencyQueryService.findAll());
+
+            // when
+            lotteryNumberFrequencyService.increaseLotteryNumberFrequency(List.of(1, 2, 3, 4, 5, 6));
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryNumberFrequencyQueryService.findAll());
+
+            // then
+            verify(lotteryNumberFrequencyQueryRepository, times(1)).findAll();
+        }
     }
 
-    @Test
-    void 로또_당첨_정보를_페이징할_때_캐시가_적용_됐는지_확인한다() {
-        // given
-        LotteryHistory lotteryHistory = LotteryHistory.create(
-                LotteryNumber.create(1, 2, 3, 4, 5, 6),
-                1000000000L, 3, 4);
-        Pageable pageable = Pageable.ofSize(1);
-        when(lotteryHistoryQueryRepository.findTop10ByOrderByRoundDesc(pageable))
-                .thenReturn(List.of(lotteryHistory));
+    @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+    @DisplayName("로또_당첨_정보를_페이징할_때")
+    class FindLotteryHistoriesTest {
 
-        // when
-        IntStream.range(0, 10)
-                .forEach(i -> lotteryHistoryQueryService.getLotteryHistories(pageable));
+        @Test
+        @Order(7)
+        void 캐시가_적용_됐는지_확인한다() {
+            // given
+            Pageable pageable = Pageable.ofSize(1);
 
-        // then
-        verify(lotteryHistoryQueryRepository, times(1)).findTop10ByOrderByRoundDesc(pageable);
+            // when
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistories(pageable));
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findTop10ByOrderByRoundDesc(pageable);
+        }
+
+        @Test
+        @Order(8)
+        void 로또_당첨_정보가_업데이트_되고_캐시가_갱신_됐는지_확인한다() {
+            // given
+            Pageable pageable = Pageable.ofSize(1);
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistories(pageable));
+
+            // when
+            LotteryNumber lotteryNumber = LotteryNumber.create(1, 2, 3, 4, 5, 6);
+            LotteryHistory aftherlotteryHistory = LotteryHistory.create(lotteryNumber, 1000000000L, 3, 11);
+            lotteryHistoryService.save(aftherlotteryHistory);
+            IntStream.range(0, 10)
+                    .forEach(i -> lotteryHistoryQueryService.getLotteryHistories(pageable));
+
+            // then
+            verify(lotteryHistoryQueryRepository, times(1)).findTop10ByOrderByRoundDesc(pageable);
+        }
     }
 }
