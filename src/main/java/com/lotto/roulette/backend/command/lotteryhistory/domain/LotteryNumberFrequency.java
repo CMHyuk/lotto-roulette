@@ -20,9 +20,4 @@ public class LotteryNumberFrequency {
 
     @Column(nullable = false)
     private Integer frequency;
-
-    public LotteryNumberFrequency(Integer lotteryNumber) {
-        this.lotteryNumber = lotteryNumber;
-        this.frequency = DEFAULT_FREQUENCY;
-    }
 }
