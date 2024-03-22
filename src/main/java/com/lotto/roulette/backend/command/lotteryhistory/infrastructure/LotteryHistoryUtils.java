@@ -7,6 +7,7 @@ import com.lotto.roulette.backend.command.lotteryhistory.infrastructure.lotterya
 import com.lotto.roulette.backend.common.exception.BusinessException;
 import com.lotto.roulette.backend.common.exception.presntation.InternalServerErrorCode;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import static java.util.stream.IntStream.range;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class LotteryHistoryUtils {
@@ -34,6 +36,7 @@ public class LotteryHistoryUtils {
         try {
             return objectMapper.readValue(response, LotteryHistoryApiResponse.class);
         } catch (Exception e) {
+            log.error("로또 데이터 변환 중 에러가 발생했습니다.");
             throw BusinessException.from(new InternalServerErrorCode(e.getMessage()));
         }
     }
