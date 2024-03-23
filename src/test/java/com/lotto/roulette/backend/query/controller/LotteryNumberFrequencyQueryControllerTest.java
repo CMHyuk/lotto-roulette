@@ -43,7 +43,7 @@ class LotteryNumberFrequencyQueryControllerTest extends DocumentationTest {
     @Test
     void 가장_많이_나온_로또_번호_6개를_조회한다() throws Exception {
         // given
-        given(lotteryNumberFrequencyQueryService.findTop6MostFrequentNumbers())
+        given(lotteryNumberFrequencyQueryService.findTopSixMostFrequentNumbers())
                 .willReturn(List.of(
                         LotteryNumberFrequencyResponse.of(6, 6),
                         LotteryNumberFrequencyResponse.of(5, 5),

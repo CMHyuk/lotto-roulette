@@ -30,7 +30,7 @@ class LotteryNumberFrequencyQueryServiceTest extends ServiceTest {
     @Test
     void 가장_많이_나온_로또_번호_6개를_조회한다() {
         // when
-        List<LotteryNumberFrequencyResponse> actual = lotteryNumberFrequencyQueryService.findTop6MostFrequentNumbers();
+        List<LotteryNumberFrequencyResponse> actual = lotteryNumberFrequencyQueryService.findTopSixMostFrequentNumbers();
 
         // then
         assertThat(actual)

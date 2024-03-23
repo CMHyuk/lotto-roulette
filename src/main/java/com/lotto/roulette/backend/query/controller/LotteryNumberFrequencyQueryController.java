@@ -24,6 +24,6 @@ public class LotteryNumberFrequencyQueryController {
 
     @GetMapping("/top-six")
     public ResponseEntity<List<LotteryNumberFrequencyResponse>> findTop6MostFrequentNumbers() {
-        return ResponseEntity.ok(lotteryNumberFrequencyQueryService.findTop6MostFrequentNumbers());
+        return ResponseEntity.ok(lotteryNumberFrequencyQueryService.findTopSixMostFrequentNumbers());
     }
 }
