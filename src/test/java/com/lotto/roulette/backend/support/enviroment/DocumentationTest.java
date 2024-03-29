@@ -1,6 +1,7 @@
 package com.lotto.roulette.backend.support.enviroment;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryFacade;
 import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryNumberFrequencyService;
 import com.lotto.roulette.backend.command.lotteryhistory.application.LotteryHistoryService;
 import com.lotto.roulette.backend.command.lotterynumber.application.LotteryNumberGenerateService;
@@ -55,6 +56,9 @@ public class DocumentationTest {
 
     @MockBean
     protected LotteryNumberFrequencyQueryService lotteryNumberFrequencyQueryService;
+
+    @MockBean
+    protected LotteryHistoryFacade lotteryHistoryFacade;
 
     protected List<FieldDescriptor> getErrorDescriptor(ErrorCode[] errorCodes) {
         return Arrays.stream(errorCodes)
