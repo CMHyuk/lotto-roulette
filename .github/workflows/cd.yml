@@ -45,7 +45,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
-          source: "./src/main/resources/be-config/docker/docker-compose-dev.yml"
+          source: "./src/main/resources/yml-config/docker/docker-compose-dev.yml"
           target: "/home/ubuntu"
           strip_components: 6
 
