@@ -13,7 +13,7 @@ CREATE TABLE lottery_history
     CONSTRAINT pk_lotteryhistory PRIMARY KEY (id)
 );
 
-CREATE INDEX IDX_ROUND ON lottery_history (round);
+CREATE INDEX IDX_FIRST_PRIZE_AMOUNT ON lottery_history (first_prize_amount);
 
 ALTER TABLE lottery_history
     ADD CONSTRAINT uc_lottery_history_round UNIQUE (round);

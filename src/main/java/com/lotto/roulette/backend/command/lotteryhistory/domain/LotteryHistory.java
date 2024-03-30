@@ -7,15 +7,16 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = @Index(name = "IDX_ROUND", columnList = "round"),
-        uniqueConstraints = {@UniqueConstraint(
+@Table(indexes = @Index(name = "IDX_FIRST_PRIZE_AMOUNT", columnList = "first_prize_amount"),
+        uniqueConstraints = @UniqueConstraint(
                 name = "uc_lottery_history_round",
-                columnNames = {"round"}
-        )})
+                columnNames = "round"
+        ))
 @Getter
 public class LotteryHistory {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Embedded
