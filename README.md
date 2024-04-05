@@ -9,5 +9,8 @@
 
 <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white"/> <img src="https://img.shields.io/badge/GithubActions-2088FF?style=flat&logo=githubactions&logoColor=white"/> <img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white"/> <img src="https://img.shields.io/badge/Grafana-F46800?style=flat&logo=Grafana&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>
 
+## CI CD Architecture
+<img src="https://i.esdrop.com/d/f/fgEMhR98LL/rz4ySGIQp3.png">
+
 ## 🏗️ Service Architecture
 <img src="https://i.esdrop.com/d/f/fgEMhR98LL/SXKPr8mBpc.png"/>
