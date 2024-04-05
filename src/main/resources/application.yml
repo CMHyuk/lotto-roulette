@@ -10,15 +10,6 @@ spring:
     baseline-on-migrate: true
     version: 1
 
-management:
-  endpoint:
-    health:
-      show-components: always
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
 ---
 spring:
   config:
